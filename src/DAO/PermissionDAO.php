@@ -106,13 +106,14 @@ class PermissionDAO
         return $stmt->execute();
     }
 
+
     /**
      * @param $array
-     * @return Permission
+     * @return Permission|false
      */
-    private function createPermission($array): Permission
+    private function createPermission($array)
     {
-        return new Permission($array['id_permission'], $array['name'], $array['admin_access'] == 0);
+        return !empty($array) ? new Permission($array['id_permission'], $array['name'], $array['admin_access'] == 0) : false;
     }
 
     public function close() {
