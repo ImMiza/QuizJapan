@@ -1,9 +1,16 @@
 <?php
 
+$link = dirname(__FILE__) . DIRECTORY_SEPARATOR . "PermissionDAO.php";
+require_once "{$link}";
+
+$link = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "class" . DIRECTORY_SEPARATOR . "User.php";
+require_once "{$link}";
 
 class UserDAO
 {
 
+    public static $ADMIN_PERMISSION = 1;
+    public static $USER_PERMISSION = 2;
     /**
      * @var mysqli
      */
@@ -114,9 +121,22 @@ class UserDAO
 
     /**
      * @param int $id
+     * @param string $newPassword
+     * @return false|User
+     */
+    public function updatePassword(int $id, string $newPassword) {
+        $newPassword = $this->encrypt($newPassword);
+        $stmt = $this->connection->prepare("UPDATE `user` SET `mdp` = ? WHERE id_user = ?");
+        $stmt->bind_param("si", $newPassword, $id);
+
+        return $stmt->execute() === true ? $this->getUserById($id) : false;
+    }
+
+    /**
+     * @param int $id
      * @return bool
      */
-    public function removePermission(int $id): bool
+    public function removeUser(int $id): bool
     {
         $stmt = $this->connection->prepare("DELETE FROM `user` WHERE id_user = ?");
         $stmt->bind_param("i", $id);
@@ -130,12 +150,13 @@ class UserDAO
      */
     public function pseudoIsAlreadyTaken(string $pseudo): bool
     {
-        $stmt = $this->connection->prepare("SELECT * FROM `user` WHERE `pseudo` = ?");
+        $stmt = $this->connection->prepare("SELECT COUNT(*) AS amount FROM `user` WHERE `pseudo` = ?");
         $stmt->bind_param("s", $pseudo);
 
         if($stmt->execute()) {
-            if($stmt->num_rows >= 1) {
-                return false;
+            $result = $stmt->get_result();
+            if($result !== false) {
+                return $result->fetch_assoc()['amount'] >= 1;
             }
         }
 
@@ -148,16 +169,16 @@ class UserDAO
      */
     public function emailIsAlreadyTaken(string $email): bool
     {
-        $stmt = $this->connection->prepare("SELECT * FROM `user` WHERE `email` = ?");
+        $stmt = $this->connection->prepare("SELECT COUNT(*) AS amount FROM `user` WHERE `email` = ?");
         $stmt->bind_param("s", $email);
-
         if($stmt->execute()) {
-            if($stmt->num_rows >= 1) {
-                return false;
+            $result = $stmt->get_result();
+            if($result !== false) {
+                return $result->fetch_assoc()['amount'] >= 1;
             }
         }
 
-        return true;
+        return false;
     }
 
     /**
@@ -171,11 +192,9 @@ class UserDAO
         $stmt->bind_param("ss", $email, $mdp);
 
         if($stmt->execute()) {
-            if($stmt->num_rows >= 1) {
-                $result = $stmt->get_result();
-                if($result !== false) {
-                    return $this->createUser($result->fetch_assoc());
-                }
+            $result = $stmt->get_result();
+            if($result !== false) {
+                return $this->createUser($result->fetch_assoc());
             }
         }
 
