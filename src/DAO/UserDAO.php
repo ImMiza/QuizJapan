@@ -125,6 +125,64 @@ class UserDAO
     }
 
     /**
+     * @param string $pseudo
+     * @return bool
+     */
+    public function pseudoIsAlreadyTaken(string $pseudo): bool
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM `user` WHERE `pseudo` = ?");
+        $stmt->bind_param("s", $pseudo);
+
+        if($stmt->execute()) {
+            if($stmt->num_rows >= 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param string $email
+     * @return bool
+     */
+    public function emailIsAlreadyTaken(string $email): bool
+    {
+        $stmt = $this->connection->prepare("SELECT * FROM `user` WHERE `email` = ?");
+        $stmt->bind_param("s", $email);
+
+        if($stmt->execute()) {
+            if($stmt->num_rows >= 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $email
+     * @param $mdp
+     * @return false|User
+     */
+    public function getUser($email, $mdp) {
+        $mdp = $this->encrypt($mdp);
+        $stmt = $this->connection->prepare("SELECT * FROM `user` WHERE `email` = ? AND `mdp` = ?");
+        $stmt->bind_param("ss", $email, $mdp);
+
+        if($stmt->execute()) {
+            if($stmt->num_rows >= 1) {
+                $result = $stmt->get_result();
+                if($result !== false) {
+                    return $this->createUser($result->fetch_assoc());
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @param $array
      * @return false|User
      */
@@ -146,6 +204,7 @@ class UserDAO
     {
         return hash("sha256", $mdp);
     }
+
 
     public function close() {
         mysqli_close($this->connection);
