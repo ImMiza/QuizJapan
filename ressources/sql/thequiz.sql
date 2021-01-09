@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 06 jan. 2021 à 19:23
+-- Généré le : sam. 09 jan. 2021 à 20:30
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -100,7 +100,15 @@ CREATE TABLE IF NOT EXISTS `permission` (
   `name` varchar(50) NOT NULL,
   `admin_access` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_permission`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `permission`
+--
+
+INSERT INTO `permission` (`id_permission`, `name`, `admin_access`) VALUES
+(1, 'Administrateur', 0),
+(2, 'Joueur', 1);
 
 -- --------------------------------------------------------
 
@@ -133,8 +141,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_permission` bigint(20) UNSIGNED NOT NULL COMMENT 'cle etrangere ''permission''',
   `points` int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_user`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `pseudo` (`pseudo`),
   KEY `id_permission` (`id_permission`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
