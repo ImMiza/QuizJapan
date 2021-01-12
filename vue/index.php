@@ -1,5 +1,5 @@
 <html lang="fr">
-    <?php include_once('../public/template/head.php'); ?>
+    <?php include_once('../public/template/head.php');?>
 
     <body>
         <?php include_once('../public/template/header.php'); ?>

@@ -3,7 +3,15 @@
 
     <body>
     
-        <?php include_once('../public/template/header.php'); ?>
+        <?php include_once('../public/template/header.php');
+        if(isset($GLOBALS['mailErr'])){
+            $mailErr = $GLOBALS['mailErr'];
+        }
+        if(isset($GLOBALS['pseudoError'])){
+            $pseudoError = $GLOBALS['pseudoError'];
+        }
+        var_dump($GLOBALS['pseudoError']);
+        ?>
 
         <main>
         <div class="container-fluid mt-3">
@@ -34,7 +42,7 @@
                                     <?php
                                     if (isset($pseudoError)) { 
                                         echo('<div class="text-center alert alert-danger">');  
-                                        echo $pseudoError ;
+                                        echo $pseudoError;
                                         echo('</div>');
                                     } 
                                     ?>
@@ -47,7 +55,7 @@
                                     <?php
                                     if (isset($mailErr)) { 
                                         echo('<div class="text-center alert alert-danger">');  
-                                        echo $mailErr ;
+                                        echo $mailErr;
                                         echo('</div>');
                                     } 
                                     ?>
