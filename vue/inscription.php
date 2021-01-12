@@ -4,13 +4,9 @@
     <body>
     
         <?php include_once('../public/template/header.php');
-        if(isset($GLOBALS['mailErr'])){
-            $mailErr = $GLOBALS['mailErr'];
+        if(isset($_SESSION['erreur'])){
+            $erreur = $_SESSION['erreur'];
         }
-        if(isset($GLOBALS['pseudoError'])){
-            $pseudoError = $GLOBALS['pseudoError'];
-        }
-        var_dump($GLOBALS['pseudoError']);
         ?>
 
         <main>
@@ -39,26 +35,12 @@
                                 <div class="form-group col">
                                     <label for="pseudo">Pseudo</label>
                                     <input type="text" class="form-control" id="pseudo" name="pseudo" required>
-                                    <?php
-                                    if (isset($pseudoError)) { 
-                                        echo('<div class="text-center alert alert-danger">');  
-                                        echo $pseudoError;
-                                        echo('</div>');
-                                    } 
-                                    ?>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
-                                    <?php
-                                    if (isset($mailErr)) { 
-                                        echo('<div class="text-center alert alert-danger">');  
-                                        echo $mailErr;
-                                        echo('</div>');
-                                    } 
-                                    ?>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -73,7 +55,17 @@
                                     <input type="date" class="form-control" id="date" name="date" required>
                                 </div>
                             </div>
-                            <div class="text-center"><button type="submit" name="inscription" id="inscription" class="btn btn-success mt-4">Inscription</button></div>
+                            <div class="text-center">
+                                <button type="submit" name="inscription" id="inscription" class="btn btn-success mt-4">Inscription</button>
+                                <?php
+                                if (isset($erreur)) { 
+                                    echo('<div class="text-center mt-4 alert alert-danger">');  
+                                    echo $erreur;
+                                    echo('</div>');
+                                    unset($_SESSION['erreur']);
+                                } 
+                                ?>
+                            </div>
                         </form>                    
                     </div>
                 </div>           

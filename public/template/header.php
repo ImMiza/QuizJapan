@@ -1,3 +1,9 @@
+<?php
+  include_once('../src/class/User.php');
+  if(isset($_SESSION['user'])){
+    $compte = unserialize($_SESSION['user']);
+  }
+  ?>
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="titre nav-link text-white" href="http://quizjapan/vue/">QuizJapan</a>
@@ -18,9 +24,9 @@
       <ul class="navbar-nav">
         <li class="nav-item">
         <?php
-        if(isset($_SESSION['Email'])){
+        if(isset($compte)){
           echo('<a class="nav-link" href="../vue/menuUtilisateur.php">');
-          echo $_SESSION['Email'];
+          echo $compte->getEmail();
           echo('</a>');
           
         } else {
@@ -29,9 +35,9 @@
         ?>
         </li>
         <?php
-        if(isset($_SESSION['Email'])){
+        if(isset($compte)){
           echo('<li class="nav-item">');
-          echo('<a class="nav-link" id="deconnexion" name="deconnexion" href="../public/template/deconnexion.php"><span class="fa fa-power-off fa-2x"></span></a>');
+          echo('<a class="nav-link" id="deconnexion" name="deconnexion" href="../controllers/deconnexion.php"><span class="fa fa-power-off fa-2x"></span></a>');
           echo('</li>');
         }
         ?>
@@ -39,7 +45,7 @@
       
       <!-- connexion -->
       <?php
-      if(isset($_SESSION['Email'])){
+      if(isset($compte)){
       } else {
          include_once('../public/template/AffichageConnexion.php');
       }

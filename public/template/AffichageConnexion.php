@@ -26,9 +26,9 @@
                             <button type="submit" name="connexion" id="connexion" class="btn btn-primary btn-block">Connexion</button>
                         </div>
                         <?php
-                        if (isset($loginErr)) { 
+                        if (isset($erreur)) { 
                             echo('<div class="text-center alert alert-danger">');  
-                            echo $loginErr ;
+                            echo $erreur ;
                             echo('</div>');
                         } 
                         ?>

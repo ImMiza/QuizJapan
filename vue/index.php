@@ -2,7 +2,11 @@
     <?php include_once('../public/template/head.php');?>
 
     <body>
-        <?php include_once('../public/template/header.php'); ?>
+        <?php include_once('../public/template/header.php');
+        if(isset($_SESSION['erreur'])){
+            $erreur = $_SESSION['erreur'];
+        }
+        ?>
 
         <main>
             <div class="container-fluid">

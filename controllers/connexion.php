@@ -1,11 +1,17 @@
 <?php
+    session_start();
     include_once('../src/DAO/UserDAO.php'); 
 
-    $user = new UserDAO;
+    $user = new UserDAO();
 
-    $user->getUser($_POST['email'], $_POST['mdp']);
+    $compte = $user->getUser($_POST['email'], $_POST['mdp']);
 
-    $_SESSION['user'] = serialize($user); 
+    if($compte == false){
+        $logerror = "Identifiant erroné";
+        $_SESSION['erreur'] = $logerror;
+    } else {
+        $_SESSION['user'] = serialize($compte);
+    }
 
     $user->close();
     
