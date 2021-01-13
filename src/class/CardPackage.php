@@ -30,32 +30,39 @@ class CardPackage
     private $image_name;
 
     /**
+     * @var string
+     */
+    private $background_name;
+
+    /**
      * @var Card[]
      */
     private $cards;
 
     /**
-     * @var Theme
+     * @var string[]
      */
-    private $theme;
+    private $themes;
 
     /**
      * CardPackage constructor.
      * @param int $id
      * @param string $name
      * @param string $description
+     * @param string $background_name
      * @param string $image_name
      * @param Card[] $cards
-     * @param Theme $theme
+     * @param string[] $themes
      */
-    public function __construct(int $id, string $name, string $description, string $image_name, array $cards, Theme $theme)
+    public function __construct(int $id, string $name, string $description, string $background_name, string $image_name, array $cards, array $themes)
     {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->$image_name = $image_name;
+        $this->image_name = $image_name;
+        $this->background_name = $background_name;
         $this->cards = $cards;
-        $this->theme = $theme;
+        $this->themes = $themes;
     }
 
     /**
@@ -109,11 +116,33 @@ class CardPackage
     /**
      * @return string
      */
-    public function getImageFullPath(): string
+    public function getBackgroundName(): string
     {
-        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "ressources" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR;
-        $path = str_replace("\\", "/", $path);
-        return $path . $this->getImageName();
+        return $this->background_name;
+    }
+
+    /**
+     * @param string $background_name
+     */
+    public function setBackgroundName(string $background_name)
+    {
+        $this->background_name = $background_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagePath(): string
+    {
+        return "\\\\quizjapan" . DIRECTORY_SEPARATOR . "ressources" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . $this->getImageName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getBackgroundFullPath(): string
+    {
+        return "\\\\quizjapan" . DIRECTORY_SEPARATOR . "ressources" . DIRECTORY_SEPARATOR . "backgrounds" . DIRECTORY_SEPARATOR . $this->getBackgroundName();
     }
 
     /**
@@ -149,18 +178,18 @@ class CardPackage
     }
 
     /**
-     * @return Theme
+     * @return string[]
      */
-    public function getTheme(): Theme
+    public function getThemes(): array
     {
-        return $this->theme;
+        return $this->themes;
     }
 
     /**
-     * @param Theme $theme
+     * @param string[] $themes
      */
-    public function setTheme(Theme $theme)
+    public function setThemes(array $themes)
     {
-        $this->theme = $theme;
+        $this->themes = $themes;
     }
 }

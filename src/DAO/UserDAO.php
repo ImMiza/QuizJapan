@@ -60,7 +60,7 @@ class UserDAO
      * @param int $offset
      * @return User[]|false
      */
-    public function getUsers(int $limit = 100, int $offset = 0) {
+    public function getUsers(int $limit = 50, int $offset = 0) {
         $stmt = $this->connection->prepare("SELECT * FROM `user` LIMIT ? OFFSET ?");
         $stmt->bind_param("ii", $limit, $offset);
 

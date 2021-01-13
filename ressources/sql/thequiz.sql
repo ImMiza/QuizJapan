@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 09 jan. 2021 à 20:30
+-- Généré le : mer. 13 jan. 2021 à 20:02
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `fake_answers` varchar(255) NOT NULL COMMENT 'chaque reponse est separee par '',''',
   PRIMARY KEY (`id_card`),
   KEY `id_card_package` (`id_card_package`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -49,12 +49,39 @@ CREATE TABLE IF NOT EXISTS `card_package` (
   `id_card_package` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `id_package_image` bigint(20) UNSIGNED NOT NULL COMMENT 'cle etrangere ''package_image''',
-  `id_theme` bigint(20) UNSIGNED NOT NULL COMMENT 'cle etrangere ''theme''',
-  PRIMARY KEY (`id_card_package`),
-  KEY `id_package_image` (`id_package_image`),
-  KEY `id_theme` (`id_theme`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `themes` varchar(255) NOT NULL COMMENT 'séparés par des '',''',
+  PRIMARY KEY (`id_card_package`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `card_package_background`
+--
+
+DROP TABLE IF EXISTS `card_package_background`;
+CREATE TABLE IF NOT EXISTS `card_package_background` (
+  `id_background` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_card_package` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_background`),
+  KEY `id_card_package` (`id_card_package`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `card_package_image`
+--
+
+DROP TABLE IF EXISTS `card_package_image`;
+CREATE TABLE IF NOT EXISTS `card_package_image` (
+  `id_package_image` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_card_package` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_package_image`),
+  KEY `id_card_package` (`id_card_package`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -73,19 +100,6 @@ CREATE TABLE IF NOT EXISTS `history` (
   PRIMARY KEY (`id_history`),
   KEY `id_user` (`id_user`),
   KEY `id_card_package` (`id_card_package`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `package_image`
---
-
-DROP TABLE IF EXISTS `package_image`;
-CREATE TABLE IF NOT EXISTS `package_image` (
-  `id_package_image` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_package_image`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -113,19 +127,6 @@ INSERT INTO `permission` (`id_permission`, `name`, `admin_access`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `theme`
---
-
-DROP TABLE IF EXISTS `theme`;
-CREATE TABLE IF NOT EXISTS `theme` (
-  `id_theme` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_theme`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `user`
 --
 
@@ -144,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `pseudo` (`pseudo`),
   KEY `id_permission` (`id_permission`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
@@ -157,11 +158,16 @@ ALTER TABLE `card`
   ADD CONSTRAINT `fk_card_card_package` FOREIGN KEY (`id_card_package`) REFERENCES `card_package` (`id_card_package`);
 
 --
--- Contraintes pour la table `card_package`
+-- Contraintes pour la table `card_package_background`
 --
-ALTER TABLE `card_package`
-  ADD CONSTRAINT `fk_card_package_image` FOREIGN KEY (`id_package_image`) REFERENCES `package_image` (`id_package_image`),
-  ADD CONSTRAINT `fk_card_package_theme` FOREIGN KEY (`id_theme`) REFERENCES `theme` (`id_theme`);
+ALTER TABLE `card_package_background`
+  ADD CONSTRAINT `fk_background_id_card_package` FOREIGN KEY (`id_card_package`) REFERENCES `card_package` (`id_card_package`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `card_package_image`
+--
+ALTER TABLE `card_package_image`
+  ADD CONSTRAINT `fk_image_card_package` FOREIGN KEY (`id_card_package`) REFERENCES `card_package` (`id_card_package`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `history`
