@@ -1,5 +1,5 @@
 <?php
-  include_once('../src/class/User.php');
+  include_once('../src/DAO/UserDAO.php');
   if(isset($_SESSION['user'])){
     $compte = unserialize($_SESSION['user']);
   }

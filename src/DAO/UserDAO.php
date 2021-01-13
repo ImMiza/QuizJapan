@@ -79,6 +79,28 @@ class UserDAO
     }
 
     /**
+     * @param int $limit
+     * @return User[]|false
+     */
+    public function getRank(int $limit = 10) {
+        $stmt = $this->connection->prepare("SELECT * FROM `user` ORDER BY `points` DESC LIMIT ?");
+        $stmt->bind_param("i", $limit);
+
+        if($stmt->execute()) {
+            $result = $stmt->get_result();
+            if($result !== false) {
+                $array = array();
+                while($row = $result->fetch_assoc()) {
+                    array_push($array, $this->createUser($row));
+                }
+                return $array;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @param string $last_name
      * @param string $first_name
      * @param string $pseudo
