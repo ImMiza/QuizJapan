@@ -17,6 +17,9 @@
           <a class="nav-link" href="http://quizjapan/vue/">Accueil</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="http://quizjapan/vue/bibliotheque">Bibliothèque</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="http://quizjapan/vue/vueErreur">Si un lien ne marche pas clique moi</a>
         </li>
       </ul>

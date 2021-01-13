@@ -3,14 +3,15 @@
 
     <body>
     
-        <?php include_once('../public/template/header.php');
-        if(isset($_SESSION['erreur'])){
-            $erreur = $_SESSION['erreur'];
-        }
+        <?php 
+            include_once('../public/template/header.php');
+            if(isset($_SESSION['erreur'])){
+                $erreur = $_SESSION['erreur'];
+            }
         ?>
 
         <main>
-        <div class="container-fluid mt-3">
+            <div class="container-fluid mt-3">
                 <div class="row">
                     <div class="col-2">
                         <button onclick=window.location.href='../vue' class="btn btn-success">Retour</button>

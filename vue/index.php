@@ -2,11 +2,11 @@
     <?php include_once('../public/template/head.php');?>
 
     <body>
-        <?php include_once('../public/template/header.php');
-
-        if(isset($_SESSION['erreur'])){
-            $erreur = $_SESSION['erreur'];
-        }
+        <?php
+            if(isset($_SESSION['erreur'])){
+                $erreur = $_SESSION['erreur'];
+            }
+            include_once('../public/template/header.php');
         ?>
 
         <main>
@@ -35,12 +35,12 @@
 
                                     if(!empty($list_winner)) {
                                         $winner = $list_winner[0];
-                                        echo "<li id='' class='list-group-item list-group-item-warning'>".$winner->getPseudo() . " " . $winner->getPoints() ."<span> <i class='fas fa-trophy'></i></span></li>";
+                                        echo "<li id='' class='list-group-item list-group-item-warning'>".$winner->getPseudo() . "<span> <i class='fas fa-trophy'></i></span>" . " " . $winner->getPoints() . " ". "points" ."</li>";
                                         array_shift($list_winner);
                                     }
 
                                     foreach($list_winner as $user) {
-                                        echo "<li class='list-group-item'>".$user->getPseudo() . " " . $user->getPoints() . "</li>";
+                                        echo "<li class='list-group-item'>".$user->getPseudo() . " " . $user->getPoints() . " " . "points" . "</li>";
                                     }
                                 ?>
                             </ul>

@@ -5,13 +5,13 @@
                 <article class="card-body">
                     <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
                     <hr>
-                    <form method="POST">
+                    <form action="../controllers/connexion.php" method="POST">
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-user"></i></span>
                                 </div>
-                                <input name="mail" id="mail" class="form-control" placeholder="Email" type="email">
+                                <input name="email" id="email" class="form-control" placeholder="Email" type="email">
                             </div>
                         </div>
                         <div class="form-group">
@@ -30,6 +30,7 @@
                             echo('<div class="text-center alert alert-danger">');  
                             echo $erreur ;
                             echo('</div>');
+                            unset($_SESSION['erreur']);
                         } 
                         ?>
                         <p class="text-center"><a href="#" class="btn">Vous avez perdu votre mot de passe ?</a></p>
