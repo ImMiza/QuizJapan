@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row mt-5">
                     <div class="col"></div>
-                    <div class="col mt-5 mb-5 text-center">
+                    <div class="col mt-4 mb-5 text-center">
                         <div class="card text-white bg-primary mb-3" style="max-width: 48rem;">
                             <div class="card-header">Valeur : 15 points</div>
                             <div class="card-body">
@@ -27,8 +27,7 @@
                     </div>
                     <div class="col"></div>   
                 </div>
-                <div class="row">
-
+                <div id="playCard" class="row">
                     <div class="col-sm">
                         <div class="card border-primary mb-3" style="max-width: 18rem;">
                             <div class="card-body text-primary">
@@ -62,6 +61,21 @@
         </main>
 
         <?php include_once('../public/template/footer.php'); ?>
+        
+        <script>
+            const playCard = document.getElementById("playCard");
 
+            playCard.addEventListener("mouseover", cardOver);
+            playCard.addEventListener("mouseout", cardQuit);
+
+
+            function cardOver() {
+                document.getElementById("demo").style.color = "white";
+            }
+            
+            function cardQuit() {
+                document.getElementById("demo").style.color = "black";
+            }
+        </script>
     </body>
 </html>
