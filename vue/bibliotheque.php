@@ -92,6 +92,9 @@
             </nav>
         </main>
 
+        <?php
+        $dao->close();
+        ?>
 
         <?php include_once('../public/template/footer.php'); ?>
     </body>
