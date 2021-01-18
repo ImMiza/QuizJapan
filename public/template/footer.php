@@ -12,7 +12,8 @@
    				<i class="far fa-copyright"></i> 2021 QuizJapan, tout droit réservé.
    			</div>
    		</div>
-	</div>	
+	</div>
+
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -21,3 +22,9 @@
 integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script defer>
+    $('#navbar_search_button').autocomplete({
+        source: '../src/Completion/CardPackageSearch.php'
+    });
+</script>

@@ -1,5 +1,6 @@
 <?php
   include_once('../src/DAO/UserDAO.php');
+  include_once('../src/DAO/CardPackageDAO.php');
   if(isset($_SESSION['user'])){
     $compte = unserialize($_SESSION['user']);
   }
@@ -23,7 +24,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input id="navbar_search_button" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </li>
@@ -60,4 +61,6 @@
       ?>
     </div>
   </nav>
+
+
 </header>

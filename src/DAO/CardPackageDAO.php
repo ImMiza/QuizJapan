@@ -72,6 +72,27 @@ class CardPackageDAO
         return false;
     }
 
+
+    /**
+     * @return int
+     */
+    public function getCardPackagesAmount(): int
+    {
+        $stmt = $this->connection->prepare("SELECT COUNT(*) AS amount FROM `card_package`");
+
+        if($stmt->execute()) {
+            $result = $stmt->get_result();
+            if($result !== false) {
+                $row = $result->fetch_assoc();
+                if(!empty($row)) {
+                    return $row['amount'];
+                }
+            }
+        }
+
+        return 0;
+    }
+
     /**
      * @param string $name
      * @param string $description
