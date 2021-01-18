@@ -27,31 +27,31 @@
                     </div>
                     <div class="col"></div>   
                 </div>
-                <div id="playCard" class="row">
+                <div class="row">
                     <div class="col-sm">
-                        <div class="card border-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-body text-primary">
+                        <div id="rep1Border" class="card pointeurCarte border-primary mb-3" style="max-width: 18rem;">
+                            <div id="rep1" class="card-body text-primary">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="card border-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-body text-primary">
+                        <div id="rep2Border" class="card pointeurCarte border-primary mb-3" style="max-width: 18rem;">
+                            <div id="rep2" class="card-body text-primary">
                                 <p class="card-text">Some quick example text to build o card's content.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="card border-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-body text-primary">
+                        <div id="rep3Border" class="card pointeurCarte border-primary mb-3" style="max-width: 18rem;">
+                            <div id="rep3" class="card-body text-primary">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cae card title and make up the bulk of the card's cone card title and make up the bulk of the card's cone card title and make up the bulk of the card's cone card title and make up the bulk of the card's conrd's content.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="card border-primary mb-3" style="max-width: 18rem;">
-                            <div class="card-body text-primary">
+                        <div id="rep4Border" class="card pointeurCarte border-primary mb-3" style="max-width: 18rem;">
+                            <div id="rep4" class="card-body text-primary">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
@@ -62,20 +62,90 @@
 
         <?php include_once('../public/template/footer.php'); ?>
         
-        <script>
-            const playCard = document.getElementById("playCard");
+        <script defer>
+            let texte = document.getElementById("rep1");
+            let bordure = document.getElementById("rep1Border");
+            document.getElementById("rep1").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep1").addEventListener("mouseout", mouseOut);
 
-            playCard.addEventListener("mouseover", cardOver);
-            playCard.addEventListener("mouseout", cardQuit);
+            function mouseOver() {
+                bordure.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                texte.className = "card-body";
 
-
-            function cardOver() {
-                document.getElementById("demo").style.color = "white";
-            }
-            
-            function cardQuit() {
-                document.getElementById("demo").style.color = "black";
-            }
+            };
+            function mouseOut() {
+                bordure.className = "card pointeurCarte border-primary mb-3"
+                texte.className = "card-body text-primary";
+            };
         </script>
+
+        <script defer>
+            let texte2 = document.getElementById("rep2");
+            let bordure2 = document.getElementById("rep2Border");
+            document.getElementById("rep2").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep2").addEventListener("mouseout", mouseOut);
+
+            function mouseOver() {
+                bordure2.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                texte2.className = "card-body";
+
+            };
+            function mouseOut() {
+                bordure2.className = "card pointeurCarte border-primary mb-3"
+                texte2.className = "card-body text-primary";
+            };
+        </script>
+
+        <script defer>
+            let texte3 = document.getElementById("rep3");
+            let bordure3 = document.getElementById("rep3Border");
+            document.getElementById("rep3").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep3").addEventListener("mouseout", mouseOut);
+
+            function mouseOver() {
+                bordure3.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                texte3.className = "card-body";
+
+            };
+            function mouseOut() {
+                bordure3.className = "card pointeurCarte border-primary mb-3"
+                texte3.className = "card-body text-primary";
+            };
+        </script>
+
+        <script defer>
+            let texte4 = document.getElementById("rep4");
+            let bordure4 = document.getElementById("rep4Border");
+            document.getElementById("rep4").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep4").addEventListener("mouseout", mouseOut);
+
+            function mouseOver() {
+                bordure4.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                texte4.className = "card-body";
+
+            };
+            function mouseOut() {
+                bordure4.className = "card pointeurCarte border-primary mb-3"
+                texte4.className = "card-body text-primary";
+            };
+        </script>
+
+        <script defer>
+            let texte5 = document.getElementById("rep5");
+            let bordure5 = document.getElementById("rep5Border");
+            document.getElementById("rep5").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep5").addEventListener("mouseout", mouseOut);
+
+            function mouseOver() {
+                bordure5.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                texte5.className = "card-body";
+
+            };
+            function mouseOut() {
+                bordure5.className = "card pointeurCarte border-primary mb-3"
+                texte5.className = "card-body text-primary";
+            };
+        </script>
+
     </body>
 </html>
