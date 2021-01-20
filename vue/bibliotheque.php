@@ -24,7 +24,7 @@
                 <?php
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $page = is_numeric($page) ? $page : 1;
-                    $limit = 40;
+                    $limit = 15;
 
 
                     $dao = new CardPackageDAO();
@@ -45,7 +45,7 @@
 
                 ?>
 
-                <div class="col mt-2 text-center">
+                <div class="col mt-2 mb-4 text-center">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?=$package->getImagePath()?>" alt="Card image cap">
                         <div class="card-body">

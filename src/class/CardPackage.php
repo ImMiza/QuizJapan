@@ -134,7 +134,7 @@ class CardPackage
      */
     public function getImagePath(): string
     {
-        return "\\\\quizjapan" . DIRECTORY_SEPARATOR . "ressources" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . $this->getImageName();
+        return "http:\\\\quizjapan" . DIRECTORY_SEPARATOR . "ressources" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . $this->getImageName();
     }
 
     /**
