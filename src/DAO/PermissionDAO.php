@@ -29,7 +29,7 @@ class PermissionDAO
      * @param int $id
      * @return Permission|false
      */
-    public function getPermissionById(int $id): Permission
+    public function getPermissionById(int $id)
     {
         $stmt = $this->connection->prepare("SELECT * FROM `permission` WHERE `id_permission` = ?");
         $stmt->bind_param("i", $id);

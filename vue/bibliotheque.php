@@ -34,8 +34,17 @@
                     $i = 0;
                     $offset = (1 <= $page && $page <= $amount_pages) ? (($page - 1) * $limit) : 0;
 
+                    if(isset($_POST['navbar_submit_button'])) {
+                        $search = isset($_POST['navbar_search_button']) ? $_POST['navbar_search_button'] : "";
+                        $list = $dao->searchCardPackage($search, $limit, $offset);
+                    }
+                    else {
+                        $list = $dao->getCardPackages($limit, $offset);
+                    }
+                    $list = $list === false ? array() : $list;
+
                     echo "<div class='row'>";
-                    foreach ($dao->getCardPackages($limit, $offset) as $package) {
+                    foreach ($list as $package) {
                         if($i >= $package_by_rows) {
                             echo "</div>";
                             echo "<div class='row'>";
