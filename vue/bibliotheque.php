@@ -33,7 +33,7 @@
                     $amount_pages = $amount_pages == 0 ? 1 : $amount_pages;
                     $i = 0;
                     $offset = (1 <= $page && $page <= $amount_pages) ? (($page - 1) * $limit) : 0;
-                    $dao->createNewCardPackage("Bleu", "Une autre description", "champion.gif", "lost.jpg", ["champion", "tsoungui", "ez"]);
+
                     echo "<div class='row'>";
                     foreach ($dao->getCardPackages($limit, $offset) as $package) {
                         if($i >= $package_by_rows) {
