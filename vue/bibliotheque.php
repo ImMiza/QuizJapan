@@ -67,29 +67,35 @@
                     echo "</div>";
                 ?>
 
-            </div>
+                <div class="row mt-5">
+                    <div class="col"></div>
+                    <div class="col mt-4 mb-5 text-center">
+                        <nav aria-label="Pagination">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Précédent</span>
+                                    </a>
+                                </li>
+                                <?php
+                                for($i = 1; $i <= $amount_pages; $i++) {
+                                    echo "<li class='page-item'><a class='page-link' href='//quizjapan/vue/bibliotheque?page=".$i."'>".$i."</a></li>";
+                                }
+                                ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col"></div>   
+                </div>
 
-            <nav aria-label="Pagination">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Précédent</span>
-                        </a>
-                    </li>
-                    <?php
-                    for($i = 1; $i <= $amount_pages; $i++) {
-                        echo "<li class='page-item'><a class='page-link' href='//quizjapan/vue/bibliotheque?page=".$i."'>".$i."</a></li>";
-                    }
-                    ?>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Suivant</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            </div>
         </main>
 
         <?php
