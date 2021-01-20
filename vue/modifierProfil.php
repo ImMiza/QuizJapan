@@ -26,7 +26,7 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION['email']; ?>">
+                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $compte->getEmail() ?>">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -38,39 +38,23 @@
                             <div class="form-row">
                                 <div class="form-group col-6">
                                     <label for="nom">Nom</label>
-                                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $_SESSION['nom']; ?>">
+                                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $compte->getLastName() ?>">
                                 </div>
                                 <div class="form-group col-6">
                                     <label for="prenom">Prénom</label>
-                                    <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $_SESSION['prenom']; ?>">
+                                    <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $compte->getFirstName() ?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="raisonSocial">Raison social</label>
-                                    <input type="text" class="form-control" id="raisonSocial" name="raisonSocial" value="<?php echo $_SESSION['raison']; ?>">
+                                    <label for="raisonSocial">Pseudo</label>
+                                    <input type="text" class="form-control" id="raisonSocial" name="raisonSocial" value="<?php echo $compte->getPseudo() ?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="adresse">Adresse</label>
-                                    <input type="text" class="form-control" id="adresse" name="adresse" value="<?php echo $_SESSION['adresse']; ?>">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-8">
-                                    <label for="ville">Ville</label>
-                                    <input type="text" class="form-control" id="ville" name="ville" value="<?php echo $_SESSION['ville']; ?>">
-                                </div>
-                                <div class="form-group col-4">
-                                    <label for="codePostal">Code postal</label>
-                                    <input type="number" class="form-control" id="codePostal" name="codePostal" value="<?php echo $_SESSION['codePostal']; ?>">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col">
-                                    <label for="ntel">N° de téléphone</label>
-                                    <input type="number" class="form-control" id="ntel" name="ntel" value="<?php echo $_SESSION['tel']; ?>">
+                                    <label for="adresse">Date de naissance</label>
+                                    <input type="date" class="form-control" id="date" name="date" value="<?php echo $compte->getBirthDate() ?>">
                                 </div>
                             </div>
                             <div class="text-center"><button type="submit" name="modification" id="modification" class="btn btn-success mt-4">Modifier les informations</button></div>

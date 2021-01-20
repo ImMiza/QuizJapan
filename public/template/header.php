@@ -38,8 +38,6 @@
             echo $compte->getPoints();
             echo('</span>');
             
-          } else {
-            echo('<a class="nav-link" data-toggle="modal" data-target="#exampleModal">Connexion</a>');
           }
           ?>
         </li>
