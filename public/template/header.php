@@ -23,9 +23,9 @@
       </ul>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0">
-            <input id="navbar_search_button" class="form-control mr-sm-2" type="search" placeholder="Par thème/nom" aria-label="Search" size="35">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+          <form method="post" action="http://quizjapan/vue/bibliotheque" class="form-inline my-2 my-lg-0">
+            <input id="navbar_search_button" name="navbar_search_button" class="form-control mr-sm-2" type="search" placeholder="Par thème/nom" aria-label="Search" size="35">
+            <button name="navbar_submit_button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
           </form>
         </li>
       </ul>

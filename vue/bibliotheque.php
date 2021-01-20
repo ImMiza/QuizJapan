@@ -25,24 +25,23 @@
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $page = is_numeric($page) ? $page : 1;
                     $limit = 15;
-
+                    $package_by_rows = 5;
 
                     $dao = new CardPackageDAO();
                     $amount_package = $dao->getCardPackagesAmount();
                     $amount_pages = ceil($amount_package / $limit);
                     $amount_pages = $amount_pages == 0 ? 1 : $amount_pages;
-                    $i = 1;
-
+                    $i = 0;
                     $offset = (1 <= $page && $page <= $amount_pages) ? (($page - 1) * $limit) : 0;
-
+                    $dao->createNewCardPackage("Bleu", "Une autre description", "champion.gif", "lost.jpg", ["champion", "tsoungui", "ez"]);
                     echo "<div class='row'>";
                     foreach ($dao->getCardPackages($limit, $offset) as $package) {
-                        if($i === 0) {
+                        if($i >= $package_by_rows) {
                             echo "</div>";
                             echo "<div class='row'>";
+                            $i = 0;
                         }
-                        $i = ($i + 1) % 6;
-
+                        $i = $i + 1;
                 ?>
 
                 <div class="col mt-2 mb-4 text-center">
