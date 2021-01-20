@@ -26,7 +26,7 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $compte->getEmail() ?>">
+                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $compte->getEmail() ?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -38,26 +38,35 @@
                             <div class="form-row">
                                 <div class="form-group col-6">
                                     <label for="nom">Nom</label>
-                                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $compte->getLastName() ?>">
+                                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $compte->getLastName() ?>" required>
                                 </div>
                                 <div class="form-group col-6">
                                     <label for="prenom">Prénom</label>
-                                    <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $compte->getFirstName() ?>">
+                                    <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $compte->getFirstName() ?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="raisonSocial">Pseudo</label>
-                                    <input type="text" class="form-control" id="raisonSocial" name="raisonSocial" value="<?php echo $compte->getPseudo() ?>">
+                                    <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?php echo $compte->getPseudo() ?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="adresse">Date de naissance</label>
-                                    <input type="date" class="form-control" id="date" name="date" value="<?php echo $compte->getBirthDate() ?>">
+                                    <input type="date" class="form-control" id="date" name="date" value="<?php echo $compte->getBirthDate() ?>" required>
                                 </div>
                             </div>
                             <div class="text-center"><button type="submit" name="modification" id="modification" class="btn btn-success mt-4">Modifier les informations</button></div>
+
+                            <?php
+                                if (isset($erreur)) { 
+                                    echo('<div class="text-center alert alert-danger">');  
+                                    echo $erreur ;
+                                    echo('</div>');
+                                    unset($_SESSION['erreur']);
+                                } 
+                            ?>
                         </form>                    
                     </div>
                 </div>           
