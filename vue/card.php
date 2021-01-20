@@ -65,86 +65,156 @@
         <script defer>
             let texte = document.getElementById("rep1");
             let bordure = document.getElementById("rep1Border");
-            document.getElementById("rep1").addEventListener("mouseover", mouseOver);
-            document.getElementById("rep1").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep1Border").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep1Border").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep1").addEventListener("click", answer);
 
             function mouseOver() {
-                bordure.className = "card pointeurCarte border-success bg-success text-white mb-3"
-                texte.className = "card-body";
-
+                if(bordure.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                    texte.className = "card-body";
+                }
             };
             function mouseOut() {
-                bordure.className = "card pointeurCarte border-primary mb-3"
-                texte.className = "card-body text-primary";
+                if(bordure.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure.className = "card pointeurCarte border-primary mb-3"
+                    texte.className = "card-body text-primary";
+                }
             };
+
+            function answer() {
+                if(bordure.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure.className = "card pointeurCarte border-success bg-success text-white active mb-3"
+                    texte.className = "card-body";
+                } else {
+                    bordure.className = "card pointeurCarte border-primary mb-3"
+                    texte.className = "card-body text-primary";
+                }
+            }
         </script>
 
         <script defer>
             let texte2 = document.getElementById("rep2");
             let bordure2 = document.getElementById("rep2Border");
-            document.getElementById("rep2").addEventListener("mouseover", mouseOver);
-            document.getElementById("rep2").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep2Border").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep2Border").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep2").addEventListener("click", answer);
 
             function mouseOver() {
-                bordure2.className = "card pointeurCarte border-success bg-success text-white mb-3"
-                texte2.className = "card-body";
-
+                if(bordure2.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure2.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                    texte2.className = "card-body";
+                }
             };
             function mouseOut() {
-                bordure2.className = "card pointeurCarte border-primary mb-3"
-                texte2.className = "card-body text-primary";
+                if(bordure2.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure2.className = "card pointeurCarte border-primary mb-3"
+                    texte2.className = "card-body text-primary";
+                }
             };
+
+            function answer() {
+                if(bordure2.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure2.className = "card pointeurCarte border-success bg-success text-white active mb-3"
+                    texte2.className = "card-body";
+                } else {
+                    bordure2.className = "card pointeurCarte border-primary mb-3"
+                    texte2.className = "card-body text-primary";
+                }
+            }
         </script>
 
         <script defer>
             let texte3 = document.getElementById("rep3");
             let bordure3 = document.getElementById("rep3Border");
-            document.getElementById("rep3").addEventListener("mouseover", mouseOver);
-            document.getElementById("rep3").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep3Border").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep3Border").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep3").addEventListener("click", answer);
 
             function mouseOver() {
-                bordure3.className = "card pointeurCarte border-success bg-success text-white mb-3"
-                texte3.className = "card-body";
-
+                if(bordure3.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure3.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                    texte3.className = "card-body";
+                }
             };
             function mouseOut() {
-                bordure3.className = "card pointeurCarte border-primary mb-3"
-                texte3.className = "card-body text-primary";
+                if(bordure3.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure3.className = "card pointeurCarte border-primary mb-3"
+                    texte3.className = "card-body text-primary";
+                }
             };
+
+            function answer() {
+                if(bordure3.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure3.className = "card pointeurCarte border-success bg-success text-white active mb-3"
+                    texte3.className = "card-body";
+                } else {
+                    bordure3.className = "card pointeurCarte border-primary mb-3"
+                    texte3.className = "card-body text-primary";
+                }
+            }
         </script>
 
         <script defer>
             let texte4 = document.getElementById("rep4");
             let bordure4 = document.getElementById("rep4Border");
-            document.getElementById("rep4").addEventListener("mouseover", mouseOver);
-            document.getElementById("rep4").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep4Border").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep4Border").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep4").addEventListener("click", answer);
 
             function mouseOver() {
-                bordure4.className = "card pointeurCarte border-success bg-success text-white mb-3"
-                texte4.className = "card-body";
-
+                if(bordure4.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure4.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                    texte4.className = "card-body";
+                }
             };
             function mouseOut() {
-                bordure4.className = "card pointeurCarte border-primary mb-3"
-                texte4.className = "card-body text-primary";
+                if(bordure4.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure4.className = "card pointeurCarte border-primary mb-3"
+                    texte4.className = "card-body text-primary";
+                }
             };
+
+            function answer() {
+                if(bordure4.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure4.className = "card pointeurCarte border-success bg-success text-white active mb-3"
+                    texte4.className = "card-body";
+                } else {
+                    bordure4.className = "card pointeurCarte border-primary mb-3"
+                    texte4.className = "card-body text-primary";
+                }
+            }
         </script>
 
         <script defer>
             let texte5 = document.getElementById("rep5");
             let bordure5 = document.getElementById("rep5Border");
-            document.getElementById("rep5").addEventListener("mouseover", mouseOver);
-            document.getElementById("rep5").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep5Border").addEventListener("mouseover", mouseOver);
+            document.getElementById("rep5Border").addEventListener("mouseout", mouseOut);
+            document.getElementById("rep5").addEventListener("click", answer);
 
             function mouseOver() {
-                bordure5.className = "card pointeurCarte border-success bg-success text-white mb-3"
-                texte5.className = "card-body";
-
+                if(bordure5.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure5.className = "card pointeurCarte border-success bg-success text-white mb-3"
+                    texte5.className = "card-body";
+                }
             };
             function mouseOut() {
-                bordure5.className = "card pointeurCarte border-primary mb-3"
-                texte5.className = "card-body text-primary";
+                if(bordure5.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure5.className = "card pointeurCarte border-primary mb-3"
+                    texte5.className = "card-body text-primary";
+                }
             };
+
+            function answer() {
+                if(bordure5.className != 'card pointeurCarte border-success bg-success text-white active mb-3'){
+                    bordure5.className = "card pointeurCarte border-success bg-success text-white active mb-3"
+                    texte5.className = "card-body";
+                } else {
+                    bordure5.className = "card pointeurCarte border-primary mb-3"
+                    texte5.className = "card-body text-primary";
+                }
+            }
         </script>
 
     </body>
