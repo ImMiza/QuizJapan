@@ -24,13 +24,25 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0">
-            <input id="navbar_search_button" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" size="35">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input id="navbar_search_button" class="form-control mr-sm-2" type="search" placeholder="Par thème/nom" aria-label="Search" size="35">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
           </form>
         </li>
       </ul>
 <!--  /////////////////////////////////////////////Connexion/deconnexion/////////////////////////////////////////////////// -->
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <?php
+          if(isset($compte)){
+            echo('<span class="nav-link">Nombre de point : ');
+            echo $compte->getPoints();
+            echo('</span>');
+            
+          } else {
+            echo('<a class="nav-link" data-toggle="modal" data-target="#exampleModal">Connexion</a>');
+          }
+          ?>
+        </li>
         <li class="nav-item">
         <?php
         if(isset($compte)){
