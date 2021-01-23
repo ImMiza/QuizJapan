@@ -14,12 +14,9 @@
         <main>
             <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-4">
                         <button onclick=window.location.href='../vue/menuUtilisateur.php' class="btn btn-success">Retour</button>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-4"></div>
                     <div class="col-4">
                         <h3 class="text-center">Données personnelle du clients</h3>
                         <form action="../controllers/modifProfil.php" method="POST">
