@@ -12,41 +12,30 @@
         <main>
             <div class="container mt-5">
                 <div class="row">
-                    <div class="col-md-6">
-                        <ul class="nav nav-pills nav-stacked friendList">
-                            <li class="nav-item">
-                            <a class="nav-link active" href="#">Active</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li><li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li><li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li><li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li><li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                        </ul>
+                    <div class="col-6">
+                        <h3>Liste d'amies</h3>
+                        <div class="list-group overflow-auto friendList">
+                            <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+                            <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+                            <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+                            <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+                        </div>
                     </div>
                     <div class="col-6">
                         <div class="row">
