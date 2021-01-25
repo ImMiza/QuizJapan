@@ -6,6 +6,9 @@ require_once "{$link}";
 $link = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Theme.php';
 require_once "{$link}";
 
+$link = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'User.php';
+require_once "{$link}";
+
 class CardPackage
 {
 
@@ -45,6 +48,11 @@ class CardPackage
     private $themes;
 
     /**
+     * @var User
+     */
+    private $creator;
+
+    /**
      * CardPackage constructor.
      * @param int $id
      * @param string $name
@@ -53,8 +61,9 @@ class CardPackage
      * @param string $image_name
      * @param Card[] $cards
      * @param string[] $themes
+     * @param User $creator
      */
-    public function __construct(int $id, string $name, string $description, string $background_name, string $image_name, array $cards, array $themes)
+    public function __construct(int $id, string $name, string $description, string $background_name, string $image_name, array $cards, array $themes, User $creator)
     {
         $this->id = $id;
         $this->name = $name;
@@ -63,6 +72,7 @@ class CardPackage
         $this->background_name = $background_name;
         $this->cards = $cards;
         $this->themes = $themes;
+        $this->creator = $creator;
     }
 
     /**
@@ -191,5 +201,21 @@ class CardPackage
     public function setThemes(array $themes)
     {
         $this->themes = $themes;
+    }
+
+    /**
+     * @return User
+     */
+    public function getCreator(): User
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param User $creator
+     */
+    public function setCreator(User $creator)
+    {
+        $this->creator = $creator;
     }
 }

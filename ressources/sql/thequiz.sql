@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 13 jan. 2021 à 20:02
+-- Généré le : lun. 25 jan. 2021 à 18:34
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `fake_answers` varchar(255) NOT NULL COMMENT 'chaque reponse est separee par '',''',
   PRIMARY KEY (`id_card`),
   KEY `id_card_package` (`id_card_package`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -50,8 +50,10 @@ CREATE TABLE IF NOT EXISTS `card_package` (
   `name` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL,
   `themes` varchar(255) NOT NULL COMMENT 'séparés par des '',''',
-  PRIMARY KEY (`id_card_package`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `creator` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_card_package`),
+  KEY `creator` (`creator`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `card_package_background` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_background`),
   KEY `id_card_package` (`id_card_package`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `card_package_image` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_package_image`),
   KEY `id_card_package` (`id_card_package`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -145,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `pseudo` (`pseudo`),
   KEY `id_permission` (`id_permission`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
@@ -156,6 +158,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 ALTER TABLE `card`
   ADD CONSTRAINT `fk_card_card_package` FOREIGN KEY (`id_card_package`) REFERENCES `card_package` (`id_card_package`);
+
+--
+-- Contraintes pour la table `card_package`
+--
+ALTER TABLE `card_package`
+  ADD CONSTRAINT `fk_user_card_package` FOREIGN KEY (`creator`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `card_package_background`

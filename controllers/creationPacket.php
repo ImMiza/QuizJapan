@@ -8,7 +8,7 @@
 
     $compte = unserialize($_SESSION['user']);
 
-    $cardPackage->createNewCardPackage($_POST['name'], $_POST['description'], $_POST['image_name'], $_POST['background_name'], $_POST['themes']);
+    $cardPackage->createNewCardPackage($_POST['name'], $_POST['description'], $_POST['image_name'], $_POST['background_name'], $_POST['themes'], $compte->getId());
 
     $_SESSION['sucess'] = "Votre packet de carte est créé !";
 

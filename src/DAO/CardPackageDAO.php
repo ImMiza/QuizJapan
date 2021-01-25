@@ -6,6 +6,9 @@ require_once "{$link}";
 $link = dirname(__FILE__) . DIRECTORY_SEPARATOR . "CardDAO.php";
 require_once "{$link}";
 
+$link = dirname(__FILE__) . DIRECTORY_SEPARATOR . "UserDAO.php";
+require_once "{$link}";
+
 class CardPackageDAO
 {
 
@@ -14,6 +17,7 @@ class CardPackageDAO
      */
     private $connection;
     private $card_dao;
+    private $user_dao;
 
     public function __construct()
     {
@@ -23,6 +27,7 @@ class CardPackageDAO
         if (isset($the_quiz_connect)) {
             $this->connection = $the_quiz_connect;
             $this->card_dao = new CardDAO();
+            $this->user_dao = new UserDAO();
         }
         else {
             die("Erreur: Connection CardDAO");
@@ -124,15 +129,16 @@ class CardPackageDAO
      * @param string $image_name
      * @param string $background_name
      * @param array $themes
+     * @param int $id_creator
      * @return CardPackage|false
      */
-    public function createNewCardPackage(string $name, string $description, string $image_name, string $background_name, array $themes) {
+    public function createNewCardPackage(string $name, string $description, string $image_name, string $background_name, array $themes, int $id_creator) {
         $str_themes  = "";
         foreach ($themes as $t) {$str_themes = $str_themes . "," . $t;}
         $str_themes = trim($str_themes, ",");
 
-        $stmt = $this->connection->prepare("INSERT INTO `card_package` (`id_card_package`, `name`, `description`, `themes`) VALUES (NULL, ?, ?, ?)");
-        $stmt->bind_param("sss", $name, $description, $str_themes);
+        $stmt = $this->connection->prepare("INSERT INTO `card_package` (`id_card_package`, `name`, `description`, `themes`, `creator`) VALUES (NULL, ?, ?, ?, ?)");
+        $stmt->bind_param("sss", $name, $description, $str_themes, $id_creator);
 
         if($stmt->execute() === false) {
             return false;
@@ -148,7 +154,8 @@ class CardPackageDAO
         $stmt->bind_param("is", $id_card_package, $background_name);
         $stmt->execute();
 
-        return new CardPackage($id_card_package, $name, $description, $background_name, $image_name, array(), $themes);
+        $user = $this->user_dao->getUserById($id_creator);
+        return new CardPackage($id_card_package, $name, $description, $background_name, $image_name, array(), $themes, $user);
     }
 
 
@@ -159,15 +166,16 @@ class CardPackageDAO
      * @param string $image_name
      * @param string $background_name
      * @param array $themes
+     * @param int $id_creator
      * @return CardPackage|false
      */
-    public function updateCard(int $id, string $name, string $description, string $image_name, string $background_name, array $themes) {
+    public function updateCard(int $id, string $name, string $description, string $image_name, string $background_name, array $themes, int $id_creator) {
         $str_themes  = "";
         foreach ($themes as $t) {$str_themes = $str_themes . "," . $t;}
         $str_themes = trim($str_themes, ",");
 
-        $stmt = $this->connection->prepare("UPDATE `card_package` SET `name` = ?, `description` = ?, `themes` = ? WHERE id_card_package = ?");
-        $stmt->bind_param("sssi", $name, $description, $str_themes, $id);
+        $stmt = $this->connection->prepare("UPDATE `card_package` SET `name` = ?, `description` = ?, `themes` = ?, `creator` = ? WHERE id_card_package = ?");
+        $stmt->bind_param("sssi", $name, $description, $str_themes, $id_creator, $id);
 
         if($stmt->execute() === false) {
             return false;
@@ -185,7 +193,8 @@ class CardPackageDAO
         $stmt->bind_param("s", $background_name);
         $stmt->execute();
 
-        return new CardPackage($id, $name, $description, $background_name, $image_name, $cards, $themes);
+        $user = $this->user_dao->getUserById($id_creator);
+        return new CardPackage($id, $name, $description, $background_name, $image_name, $cards, $themes, $user);
     }
 
     /**
@@ -208,6 +217,11 @@ class CardPackageDAO
 
         $cards = $this->card_dao->getCardsFromPackage($array['id_card_package']);
         if($cards === false) {
+            return false;
+        }
+
+        $user = $this->user_dao->getUserById($array['creator']);
+        if($user === false) {
             return false;
         }
 
@@ -240,11 +254,12 @@ class CardPackageDAO
             }
         }
 
-        return new CardPackage($array['id_card_package'], $array['name'], $array['description'], $background, $image, $cards, $themes);
+        return new CardPackage($array['id_card_package'], $array['name'], $array['description'], $background, $image, $cards, $themes, $user);
     }
 
     public function close() {
         mysqli_close($this->connection);
         $this->card_dao->close();
+        $this->user_dao->close();
     }
 }
