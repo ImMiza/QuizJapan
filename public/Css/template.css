@@ -42,3 +42,8 @@ main {
 }
 
 .ui-helper-hidden-accessible { display:none; }
+
+.friendList {
+    height:150px;
+    overflow-y: scroll;
+  }

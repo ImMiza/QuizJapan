@@ -15,6 +15,9 @@
                     <div class="col p-0">
                         <div class="jumbotron text-center">
                             <h1 class="display-4">Mes créations</h1>
+                            <div class="text-center">
+                                <button onclick=window.location.href='../vue/creationPackage.php' type="button" class="btn btn-success mt-2">Créé un packet de carte</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,12 +59,14 @@
                 <div class="col mt-2 mb-4 text-center">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?=$package->getImagePath()?>" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title"><?=$package->getName()?></h5>
                             <p class="card-text"><?=$package->getDescription()?></p>
                             <?php
                                 if(isset($compte)){
-                                    echo("<a href='#' class='btn btn-primary'>Jouer</a>");
+                                    echo("<button type='button' class='card-link btn btn-success mt-2'>Jouer</button>");
+                                    echo("<button onclick=window.location.href='../vue/modifPackage.php' type='button' class='card-link btn btn-warning mt-2'>Modifier</button>");
+                                    echo("<button type='button' class='card-link btn btn-danger mt-2 mr-3'>Supprimer</button>");
                                 } else {
                                     echo("<p class='text-danger'>Il faut te connecter pour jouer</p>");
                                 }
