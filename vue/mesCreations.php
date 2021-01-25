@@ -7,6 +7,11 @@
                 $erreur = $_SESSION['erreur'];
             }
             include_once('../public/template/header.php');
+
+            if(!isset($compte)) {
+                header('location:http://quizjapan/vue/');
+                exit(0);
+            }
         ?>
 
         <main>
@@ -25,10 +30,6 @@
             <div class="container-fluid">
 
                 <?php
-                    if(!isset($compte)) {
-                        exit(1);
-                    }
-
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $page = is_numeric($page) ? $page : 1;
                     $limit = 15;
@@ -45,7 +46,7 @@
                     $list = $list === false ? array() : $list;
 
                     echo "<div class='row'>";
-                    foreach ($list as $package) {
+                foreach ($list as $package) {
                         if($i >= $package_by_rows) {
                             echo "</div>";
                             echo "<div class='row'>";
@@ -60,15 +61,9 @@
                         <div class="card-body text-center">
                             <h5 class="card-title"><?=$package->getName()?></h5>
                             <p class="card-text"><?=$package->getDescription()?></p>
-                            <?php
-                                if(isset($compte)){
-                                    echo("<button type='button' class='card-link btn btn-success mt-2'>Jouer</button>");
-                                    echo("<button onclick=window.location.href='../vue/modifPackage.php' type='button' class='card-link btn btn-warning mt-2'>Modifier</button>");
-                                    echo("<button type='button' class='card-link btn btn-danger mt-2 mr-3'>Supprimer</button>");
-                                } else {
-                                    echo("<p class='text-danger'>Il faut te connecter pour jouer</p>");
-                                }
-                            ?>
+                            <button type='button' class='card-link btn btn-success mt-2'>Jouer</button>
+                            <button onclick=window.location.href='../vue/modifPackage.php?package=<?=$package->getId()?>' type='button' class='card-link btn btn-warning mt-2'>Modifier</button>
+                            <button onclick=window.location.href='../controllers/suppPackage?package=<?=$package->getId()?>' type='button' class='card-link btn btn-danger mt-2 mr-3'>Supprimer</button>
                         </div>
                     </div>
                 </div>

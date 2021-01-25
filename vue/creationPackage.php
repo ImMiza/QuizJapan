@@ -1,8 +1,6 @@
 <html lang="fr">
     <?php 
         include_once('../public/template/head.php');
-        include_once('../src/DAO/ThemeDAO.php');
-        $theme = new ThemeDAO();
     ?>
 
     <body>

@@ -1,8 +1,6 @@
 <html lang="fr">
     <?php 
         include_once('../public/template/head.php');
-        include_once('../src/DAO/ThemeDAO.php');
-        $theme = new ThemeDAO();
     ?>
 
     <body>
@@ -13,6 +11,30 @@
                 $sucess = $_SESSION['sucess'];
             }
             include_once('../public/template/header.php');
+
+            if(!isset($compte)) {
+                header("location:http://quizjapan/vue/mesCreations");
+                exit(0);
+            }
+
+            $id_package = isset($_GET['package']) ? htmlspecialchars($_GET['package']) : -1;
+            $id_package = is_numeric($id_package) ? $id_package : -1;
+
+            if($id_package === -1) {
+                header("location:http://quizjapan/vue/mesCreations");
+                exit(0);
+            }
+
+            $dao = new CardPackageDAO();
+
+            $package = $dao->getCardPackageById($id_package);
+
+            if($package === false || $package->getCreator()->getId() !== $compte->getId()) {
+                $dao->close();
+                header("location:http://quizjapan/vue/mesCreations");
+                exit(0);
+            }
+
         ?>
 
         <main>
@@ -27,7 +49,7 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="name">Nom du jeu de cartes :</label>
-                                    <input type="email" class="form-control" id="name" name="name" required>
+                                    <input type="email" class="form-control" id="name" name="name" value="<?=$package->getName()?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -45,13 +67,13 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="themes">Theme :</label>
-                                    <input type="themes" class="form-control" id="themes" name="themes" size="50" required>
+                                    <input type="themes" class="form-control" id="themes" name="themes" size="50" value="<?=implode(',', $package->getThemes())?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="description">Description :</label>
-                                    <textarea class="form-control" id="description" name="description" aria-label="With textarea"></textarea>
+                                    <textarea class="form-control" id="description" name="description" aria-label="With textarea"><?=$package->getDescription()?></textarea>
                                 </div>
                             </div>
                             <div class="text-center"><button type="submit" name="modification" id="modification" class="btn btn-warning mt-4">Modification packet</button></div>
@@ -142,5 +164,8 @@
             } );
         </script>
 
+    <?php
+        $dao->close();
+    ?>
     </body>
 </html>

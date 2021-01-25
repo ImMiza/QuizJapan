@@ -247,7 +247,7 @@ class CardPackageDAO
      * @param int $id
      * @return bool
      */
-    public function removeCard(int $id): bool
+    public function removeCardPackage(int $id): bool
     {
         $stmt = $this->connection->prepare("DELETE FROM `card_package` WHERE id_card_package = ?");
         $stmt->bind_param("i", $id);

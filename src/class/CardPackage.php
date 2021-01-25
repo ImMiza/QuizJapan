@@ -3,9 +3,6 @@
 $link = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Card.php';
 require_once "{$link}";
 
-$link = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Theme.php';
-require_once "{$link}";
-
 $link = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'User.php';
 require_once "{$link}";
 
