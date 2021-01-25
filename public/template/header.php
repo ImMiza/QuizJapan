@@ -23,7 +23,7 @@
         <?php
           if(isset($compte)){
             echo ('<li class="nav-item">');
-            echo ('<a class="nav-link" href="http://quizjapan/vue/mesCreation">Mes créations</a>');
+            echo ('<a class="nav-link" href="http://quizjapan/vue/mesCreations">Mes créations</a>');
             echo ('</li>');   
           }
         ?>

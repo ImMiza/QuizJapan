@@ -78,6 +78,52 @@ class CardPackageDAO
     }
 
     /**
+     * @param $id_creator
+     * @param int $limit
+     * @param int $offset
+     * @return array|false
+     */
+    public function getCardPackagesByCreator($id_creator, $limit = 50, $offset = 0) {
+        $stmt = $this->connection->prepare("SELECT * FROM `card_package` WHERE creator = ? LIMIT ? OFFSET ?");
+        $stmt->bind_param("iii", $id_creator,$limit, $offset);
+
+        if($stmt->execute()) {
+            $result = $stmt->get_result();
+            if($result !== false) {
+                $array = array();
+                while($row = $result->fetch_assoc()) {
+                    array_push($array, $this->createCardPackage($row));
+                }
+                return $array;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $id_creator
+     * @return int
+     */
+    public function getCardPackagesAmountByCreator($id_creator): int
+    {
+        $stmt = $this->connection->prepare("SELECT COUNT(*) AS amount FROM `card_package` WHERE creator = ?");
+        $stmt->bind_param("i", $id_creator);
+
+        if($stmt->execute()) {
+            $result = $stmt->get_result();
+            if($result !== false) {
+                $row = $result->fetch_assoc();
+                if(!empty($row)) {
+                    return $row['amount'];
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    /**
      * @param string $name_or_theme
      * @param int $limit
      * @param int $offset
@@ -138,7 +184,7 @@ class CardPackageDAO
         $str_themes = trim($str_themes, ",");
 
         $stmt = $this->connection->prepare("INSERT INTO `card_package` (`id_card_package`, `name`, `description`, `themes`, `creator`) VALUES (NULL, ?, ?, ?, ?)");
-        $stmt->bind_param("sss", $name, $description, $str_themes, $id_creator);
+        $stmt->bind_param("ssss", $name, $description, $str_themes, $id_creator);
 
         if($stmt->execute() === false) {
             return false;

@@ -25,25 +25,23 @@
             <div class="container-fluid">
 
                 <?php
+                    if(!isset($compte)) {
+                        exit(1);
+                    }
+
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $page = is_numeric($page) ? $page : 1;
                     $limit = 15;
                     $package_by_rows = 5;
 
                     $dao = new CardPackageDAO();
-                    $amount_package = $dao->getCardPackagesAmount();
+                    $amount_package = $dao->getCardPackagesAmountByCreator($compte->getId());
                     $amount_pages = ceil($amount_package / $limit);
                     $amount_pages = $amount_pages == 0 ? 1 : $amount_pages;
                     $i = 0;
                     $offset = (1 <= $page && $page <= $amount_pages) ? (($page - 1) * $limit) : 0;
 
-                    if(isset($_POST['navbar_submit_button'])) {
-                        $search = isset($_POST['navbar_search_button']) ? $_POST['navbar_search_button'] : "";
-                        $list = $dao->searchCardPackage($search, $limit, $offset);
-                    }
-                    else {
-                        $list = $dao->getCardPackages($limit, $offset);
-                    }
+                    $list = $dao->getCardPackagesByCreator($compte->getId(), $limit, $offset);
                     $list = $list === false ? array() : $list;
 
                     echo "<div class='row'>";
@@ -86,18 +84,18 @@
                         <nav aria-label="Pagination">
                             <ul class="pagination">
                                 <li class="page-item">
-                                    <a class="page-link" href="//quizjapan/vue/bibliotheque?page=<?=(($page - 1 <= 1) ? 1 : $page - 1)?>" aria-label="Previous">
+                                    <a class="page-link" href="//quizjapan/vue/mesCreations?page=<?=(($page - 1 <= 1) ? 1 : $page - 1)?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Précédent</span>
                                     </a>
                                 </li>
                                 <?php
                                 for($i = 1; $i <= $amount_pages; $i++) {
-                                    echo "<li class='page-item'><a class='page-link' href='//quizjapan/vue/bibliotheque?page=".$i."'>".$i."</a></li>";
+                                    echo "<li class='page-item'><a class='page-link' href='//quizjapan/vue/mesCreations?page=".$i."'>".$i."</a></li>";
                                 }
                                 ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="//quizjapan/vue/bibliotheque?page=<?=(($page + 1 >= $amount_pages) ? $amount_pages : $page + 1)?>" aria-label="Next">
+                                    <a class="page-link" href="//quizjapan/vue/mesCreations?page=<?=(($page + 1 >= $amount_pages) ? $amount_pages : $page + 1)?>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Suivant</span>
                                     </a>
