@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
               
-    <div class="collapse navbar-collapse pl-5" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse pl-3" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="http://quizjapan/vue/">Accueil</a>
@@ -20,6 +20,13 @@
         <li class="nav-item">
           <a class="nav-link" href="http://quizjapan/vue/bibliotheque">Bibliothèque</a>
         </li>
+        <?php
+          if(isset($compte)){
+            echo ('<li class="nav-item">');
+            echo ('<a class="nav-link" href="http://quizjapan/vue/mesCreation">Mes créations</a>');
+            echo ('</li>');   
+          }
+        ?>
       </ul>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -71,6 +78,5 @@
       ?>
     </div>
   </nav>
-
 
 </header>

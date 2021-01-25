@@ -17,7 +17,7 @@
                         <div class="text-center">
                             <ul class="list-group">
                                 <button onclick=window.location.href='../vue/creationPackage.php' type="button" class="list-group-item list-group-item-action btn btn-success mt-4">Créé un packet de carte</button>
-                                <button type="button" class="list-group-item list-group-item-action btn btn-warning mt-4">Modifier un packet de carte</button>
+                                <button onclick=window.location.href='../vue/modifPackage.php' type="button" class="list-group-item list-group-item-action btn btn-warning mt-4">Modifier un packet de carte</button>
                             </ul>
                         </div>
                     </div>

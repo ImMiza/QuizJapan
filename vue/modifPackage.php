@@ -22,7 +22,7 @@
                         <button onclick=window.location.href='../vue/menuUtilisateur.php' class="btn btn-success">Retour</button>
                     </div>
                     <div class="col-4 text-center">
-                        <h3 class="text-center">Création du packet de cartes :</h3>
+                        <h3 class="text-center">Modification packet de cartes :</h3>
                         <form action="../controllers/creationPacket.php" method="POST">
                             <div class="form-row">
                                 <div class="form-group col">
@@ -54,7 +54,7 @@
                                     <textarea class="form-control" id="description" name="description" aria-label="With textarea"></textarea>
                                 </div>
                             </div>
-                            <div class="text-center"><button type="submit" name="modification" id="modification" class="btn btn-success mt-4">Création du packet</button></div>
+                            <div class="text-center"><button type="submit" name="modification" id="modification" class="btn btn-warning mt-4">Modification packet</button></div>
 
                             <?php
                                 if (isset($erreur)) { 
