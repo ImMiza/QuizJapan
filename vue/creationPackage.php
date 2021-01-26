@@ -25,7 +25,7 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="name">Nom du jeu de cartes :</label>
-                                    <input type="email" class="form-control" id="name" name="name" required>
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                             </div>
                             <div class="form-row">
