@@ -7,12 +7,14 @@
                 $erreur = $_SESSION['erreur'];
             }
             include_once('../public/template/header.php');
+
+            $date = new DateTime($compte->getBirthDate());
         ?>
 
         <main>
-            <div class="container mt-5">
+            <div class="container-fluid mt-3">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-3">
                         <h3>Liste d'amies</h3>
                         <div class="list-group overflow-auto friendList">
                             <a href="http://quizjapan/vue/friendProfil.php?id=3" class="list-group-item list-group-item-action">Cras justo odio</a>
@@ -40,12 +42,15 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col">
-                                <h3>Données personnelle du joueur</h3>
-                                <ul class="list-group">
+                                <h3 class="text-center">Données personnelle du joueur : </h3>
+                                <div class="text-center mt-2">
+                                    <img src="../ressources/profilPicture/Among-Us.png" class="rounded" alt="Photo de l'utilisateur">
+                                </div>
+                                <ul class="list-group text-center mt-3">
                                     <li class="list-group-item">Adresse Mail : <?php echo $compte->getEmail() ?></li>
                                     <li class="list-group-item">Nom complet : <?php echo $compte->getFirstName() . " " . $compte->getLastName() ?></li>
                                     <li class="list-group-item">Pseudo : <?php echo $compte->getPseudo() ?></li>
-                                    <li class="list-group-item">Date de naissance : <?php echo $compte->getBirthDate() ?></li>
+                                    <li class="list-group-item">Date de naissance : <?php echo $date->format('d/m/Y'); ?></li>
                                     <li class="list-group-item">Nombre de points : <?php echo $compte->getPoints() ?></li>
                                 </ul>
                                 <div class="text-center">
@@ -54,8 +59,10 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-3">
                         <div class="row">
-                            <div class="col mt-5">
+                            <div class="col">
                                 <h3>Contact</h3>
                                 <a>Besoin d'aide pour votre compte ?</a></br>
                                 <a>Besoin d'aide pour votre commande ?</a></br>

@@ -8,9 +8,6 @@
             }
             include_once('../public/template/header.php');
 
-            
-        ?>
-        <?php 
             $Recoverfriend = new UserDAO();
             $friend = $Recoverfriend->getUserById($_GET["id"]);
         ?>
