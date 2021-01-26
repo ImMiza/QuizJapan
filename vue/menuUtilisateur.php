@@ -15,7 +15,7 @@
                     <div class="col-6">
                         <h3>Liste d'amies</h3>
                         <div class="list-group overflow-auto friendList">
-                            <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                            <a href="http://quizjapan/vue/friendProfil.php?id=3" class="list-group-item list-group-item-action">Cras justo odio</a>
                             <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
                             <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
                             <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
