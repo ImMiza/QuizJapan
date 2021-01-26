@@ -43,6 +43,13 @@ main {
 
 .ui-helper-hidden-accessible { display:none; }
 
+.ui-autocomplete-category{
+    background-color: rgb(192, 189, 189);
+    font: bold;
+    font-size: 1.2em;
+    box-shadow: gray;
+}
+
 .friendList {
     height:44em;
 }
