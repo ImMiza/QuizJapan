@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Création du packet de cartes :</h3>
-                        <form action="../controllers/creationPacket.php" method="POST">
+                        <form action="../controllers/creationPackage.php" method="POST">
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="name">Nom du jeu de cartes :</label>

@@ -26,8 +26,6 @@
                                     <img src="../ressources/profilPicture/Among-Us.png" class="rounded" alt="Photo de l'utilisateur">
                                 </div>
                                 <ul class="list-group text-center mt-4">
-                                    <li class="list-group-item">Adresse Mail : <?php echo $friend->getEmail() ?></li>
-                                    <li class="list-group-item">Nom complet : <?php echo $friend->getFirstName() . " " . $friend->getLastName() ?></li>
                                     <li class="list-group-item">Pseudo : <?php echo $friend->getPseudo() ?></li>
                                     <li class="list-group-item">Date de naissance : <?php echo $friend->getBirthDate() ?></li>
                                     <li class="list-group-item">Nombre de points : <?php echo $friend->getPoints() ?></li>

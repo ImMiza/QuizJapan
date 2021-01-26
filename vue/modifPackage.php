@@ -45,11 +45,11 @@
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Modification packet de cartes :</h3>
-                        <form action="../controllers/creationPacket.php" method="POST">
+                        <form action="../controllers/modifPackage.php" method="POST">
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="name">Nom du jeu de cartes :</label>
-                                    <input type="email" class="form-control" id="name" name="name" value="<?=$package->getName()?>" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="<?=$package->getName()?>" required>
                                 </div>
                             </div>
                             <div class="form-row">
