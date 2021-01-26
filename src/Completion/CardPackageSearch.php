@@ -13,9 +13,11 @@ if (isset($the_quiz_connect)) {
 
         $result = $stmt->get_result();
 
+        $names = array();
+        $themes = array();
         while ($row = $result->fetch_assoc()) {
-            if (in_array($row['name'], $array) === false) {
-                array_push($array, array("label" => $row['name'], "category" => "Nom :"));
+            if (in_array($row['name'], $names) === false) {
+                array_push($names , $row['name']);
             }
 
             $list = explode(",", $row['themes']);
@@ -25,10 +27,17 @@ if (isset($the_quiz_connect)) {
 
             foreach ($list as $word) {
                 $word = strtolower($word);
-                if ($word != "" && strpos($word, $input) !== false && in_array($word, $array) === false) {
-                    array_push($array, array("label" => $word, "category" => "Themes :"));
+                if ($word != "" && strpos($word, $input) !== false && in_array($word, $themes) === false) {
+                    array_push($themes, $word);
                 }
             }
+        }
+
+        foreach ($names as $n) {
+            array_push($array, array("label" => $n, "category" => "Nom :"));
+        }
+        foreach ($themes as $th) {
+            array_push($array, array("label" => $th, "category" => "Themes :"));
         }
 
         echo json_encode($array);
