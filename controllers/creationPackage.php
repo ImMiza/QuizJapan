@@ -42,7 +42,7 @@
     $user->close();
     $cardPackage->close();
     
-    header("location:http://quizjapan/vue/");
+    header("location:http://quizjapan/vue/mesCreations");
 
     function saveImage($img, $folder) {
         $fileTmpPath = $img['tmp_name'];
