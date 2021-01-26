@@ -27,9 +27,9 @@ if (isset($the_quiz_connect)) {
 
             foreach ($list as $word) {
                 $word = strtolower($word);
-                if ($word != "" && strpos($word, $input) !== false && in_array($word, $themes) === false) {
-                    array_push($themes, $word);
-                }
+                    if ($word != "" && strpos($word, $input) !== false && array_search($word, $themes) === false) {
+                        array_push($themes, $word);
+                    }
             }
         }
 
