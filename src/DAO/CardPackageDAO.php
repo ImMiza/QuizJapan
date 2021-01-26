@@ -130,7 +130,6 @@ class CardPackageDAO
      * @return CardPackage[]|false
      */
     public function searchCardPackage(string $name_or_theme, int $limit = 50, $offset = 0) {
-        var_dump("SELECT * FROM `card_package` WHERE LOWER(name) LIKE '%" . $name_or_theme . "%' OR LOWER(themes) LIKE '%" . $name_or_theme . "%' LIMIT ? OFFSET ?");
         $stmt = $this->connection->prepare("SELECT * FROM `card_package` WHERE LOWER(name) LIKE '%" . $name_or_theme . "%' OR LOWER(themes) LIKE '%" . $name_or_theme . "%' LIMIT ? OFFSET ?");
         $stmt->bind_param("ii", $limit, $offset);
 

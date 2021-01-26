@@ -17,8 +17,7 @@
         exit(0);
     }
 
-    $themes = explode(",", $_POST['themes']);
-    $themes = $themes === false ? array() : $themes;
+    $themes = strpos($_POST['themes'], ',') !== false ? explode(",", $_POST['themes']) : array($_POST['themes']);
     for($i = 0; $i < count($themes); $i++) {
         if($themes[$i] == "") {
             unset($themes[$i]);
@@ -30,7 +29,7 @@
     $image_name = saveImage($_FILES['image_name'], "images");
     $background_name = saveImage($_FILES['background_name'], "backgrounds");
 
-    $package = $cardPackage->createNewCardPackage($_POST['name'], $_POST['description'], $image_name, $background_name, $_POST['themes'], $compte->getId());
+    $package = $cardPackage->createNewCardPackage($_POST['name'], $_POST['description'], $image_name, $background_name, $themes, $compte->getId());
 
     if($package === false) {
         $_SESSION['erreur'] = "Erreur création, veuillez essayer de nouveau";

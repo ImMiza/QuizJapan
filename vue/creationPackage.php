@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Création du packet de cartes :</h3>
-                        <form action="../controllers/creationPackage.php" method="POST">
+                        <form action="../controllers/creationPackage.php" method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="name">Nom du jeu de cartes :</label>
@@ -31,13 +31,13 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label class="label-file" for="image_name">Image du packet de cartes</label>
-                                    <input type="file" class="form-control" id="image_name" name="image_name" required>
+                                    <input type="file" class="form-control" id="image_name" name="image_name" accept="image/*" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="background_name">Image de fond d'écran du jeu</label>
-                                    <input type="file" class="form-control" id="background_name" name="background_name" required>
+                                    <input type="file" class="form-control" id="background_name" name="background_name" accept="image/*" required>
                                 </div>
                             </div>
                             <div class="form-row">
