@@ -6,6 +6,9 @@
             if(isset($_SESSION['erreur'])){
                 $erreur = $_SESSION['erreur'];
             }
+            if(isset($_SESSION['sucess'])){
+                $success = $_SESSION['sucess'];
+            }
             include_once('../public/template/header.php');
 
             if(!isset($compte)) {
@@ -28,7 +31,14 @@
                 </div>
             </div>
             <div class="container-fluid">
-
+                <?php 
+                    if(isset($success)) {
+                        echo('<div class="text-center alert alert-success">');  
+                        echo $success;
+                        echo('</div>');
+                        unset($_SESSION['sucess']);
+                    } 
+                ?>
                 <?php
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $page = is_numeric($page) ? $page : 1;

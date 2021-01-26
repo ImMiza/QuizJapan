@@ -7,8 +7,6 @@
         <?php
             if(isset($_SESSION['erreur'])){
                 $erreur = $_SESSION['erreur'];
-            } if(isset($_SESSION['sucess'])){
-                $sucess = $_SESSION['sucess'];
             }
             include_once('../public/template/header.php');
         ?>
@@ -60,12 +58,7 @@
                                     echo $erreur ;
                                     echo('</div>');
                                     unset($_SESSION['erreur']);
-                                } if(isset($sucess)) {
-                                    echo('<div class="text-center alert alert-success">');  
-                                    echo $sucess;
-                                    echo('</div>');
-                                    unset($_SESSION['sucess']);
-                                } 
+                                }
                             ?>
                         </form>                    
                     </div>
