@@ -8,16 +8,25 @@ if (isset($the_quiz_connect)) {
         $input = $_GET['term'];
         $input = strtolower($input);
 
-        $stmt = $the_quiz_connect->prepare("SELECT CONCAT(name, ',', themes) AS result FROM `card_package` WHERE LOWER(name) LIKE '%" . $input . "%' OR LOWER(themes) LIKE '%" . $input . "%' LIMIT 30");
+        $stmt = $the_quiz_connect->prepare("SELECT name, themes FROM `card_package` WHERE LOWER(name) LIKE '%" . $input . "%' OR LOWER(themes) LIKE '%" . $input . "%' LIMIT 30");
         $stmt->execute();
 
         $result = $stmt->get_result();
 
         while ($row = $result->fetch_assoc()) {
-            foreach (explode(",", $row['result']) as $word) {
+            if (in_array($row['name'], $array) === false) {
+                array_push($array, array("label" => $row['name'], "category" => "Nom"));
+            }
+
+            $list = explode(",", $row['themes']);
+            if($list === false) {
+                continue;
+            }
+
+            foreach ($list as $word) {
                 $word = strtolower($word);
-                if (strpos($word, $input) !== false && in_array($word, $array) === false) {
-                    array_push($array, $word);
+                if ($word != "" && strpos($word, $input) !== false && in_array($word, $array) === false) {
+                    array_push($array, array("label" => $word, "category" => "Themes"));
                 }
             }
         }
