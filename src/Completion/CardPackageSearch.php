@@ -15,7 +15,7 @@ if (isset($the_quiz_connect)) {
 
         while ($row = $result->fetch_assoc()) {
             if (in_array($row['name'], $array) === false) {
-                array_push($array, array("label" => $row['name'], "category" => "Nom"));
+                array_push($array, array("label" => $row['name'], "category" => "Nom :"));
             }
 
             $list = explode(",", $row['themes']);
@@ -26,7 +26,7 @@ if (isset($the_quiz_connect)) {
             foreach ($list as $word) {
                 $word = strtolower($word);
                 if ($word != "" && strpos($word, $input) !== false && in_array($word, $array) === false) {
-                    array_push($array, array("label" => $word, "category" => "Themes"));
+                    array_push($array, array("label" => $word, "category" => "Themes :"));
                 }
             }
         }
