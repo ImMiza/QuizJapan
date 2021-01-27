@@ -248,6 +248,21 @@ class CardPackageDAO
      */
     public function removeCardPackage(int $id): bool
     {
+        $card_package = $this->getCardPackageById($id);
+        if($card_package === false) {
+            return false;
+        }
+
+        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "ressources". DIRECTORY_SEPARATOR ."images". DIRECTORY_SEPARATOR . $card_package->getImageName();
+        if(!unlink($path)) {
+            return false;
+        }
+
+        $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "ressources". DIRECTORY_SEPARATOR ."backgrounds". DIRECTORY_SEPARATOR . $card_package->getBackgroundName();
+        if(!unlink($path)) {
+            return false;
+        }
+
         $stmt = $this->connection->prepare("DELETE FROM `card_package` WHERE id_card_package = ?");
         $stmt->bind_param("i", $id);
 

@@ -147,7 +147,7 @@ class CardPackage
     /**
      * @return string
      */
-    public function getBackgroundFullPath(): string
+    public function getBackgroundPath(): string
     {
         return "\\\\quizjapan" . DIRECTORY_SEPARATOR . "ressources" . DIRECTORY_SEPARATOR . "backgrounds" . DIRECTORY_SEPARATOR . $this->getBackgroundName();
     }
