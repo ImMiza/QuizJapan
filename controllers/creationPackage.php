@@ -37,12 +37,10 @@
         exit(0);
     }
 
-    $_SESSION['sucess'] = "Votre packet de carte est créé !";
-
     $user->close();
     $cardPackage->close();
     
-    header("location:http://quizjapan/vue/mesCreations");
+    header("location:http://quizjapan/vue/creationCard?package=" . $package->getId());
 
     function saveImage($img, $folder) {
         $fileTmpPath = $img['tmp_name'];
