@@ -10,6 +10,7 @@
 
             $Recoverfriend = new UserDAO();
             $friend = $Recoverfriend->getUserById($_GET["id"]);
+            $date = new DateTime($friend->getBirthDate());
         ?>
 
         <main>
@@ -24,7 +25,7 @@
                                 </div>
                                 <ul class="list-group text-center mt-4">
                                     <li class="list-group-item">Pseudo : <?php echo $friend->getPseudo() ?></li>
-                                    <li class="list-group-item">Date de naissance : <?php echo $friend->getBirthDate() ?></li>
+                                    <li class="list-group-item">Date de naissance : <?php echo $date->format('d/m/Y'); ?></li>
                                     <li class="list-group-item">Nombre de points : <?php echo $friend->getPoints() ?></li>
                                 </ul>
                                 <div class="text-center">

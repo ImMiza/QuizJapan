@@ -55,13 +55,13 @@
 
                 <div class="col mt-2 mb-4 text-center">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?=$package->getImagePath()?>" alt="Card image cap">
+                        <img style="width:18em; height: 13em;" class="img-fluid resizeCard" src="<?=$package->getImagePath()?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?=$package->getName()?></h5>
                             <p class="card-text"><?=$package->getDescription()?></p>
                             <?php
                                 if(isset($compte)){
-                                    echo("<a href='#' class='btn btn-primary'>Jouer</a>");
+                                    echo("<a href='#' class='btn btn-success'>Jouer</a>");
                                 } else {
                                     echo("<p class='text-danger'>Il faut te connecter pour jouer</p>");
                                 }

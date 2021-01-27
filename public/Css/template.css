@@ -53,3 +53,8 @@ main {
 .friendList {
     height:44em;
 }
+
+.resizeCard {
+    width:18em; 
+    height: 13em;
+}

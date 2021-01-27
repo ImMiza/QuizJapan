@@ -65,8 +65,7 @@
                             <div class="col">
                                 <h3>Contact</h3>
                                 <a>Besoin d'aide pour votre compte ?</a></br>
-                                <a>Besoin d'aide pour votre commande ?</a></br>
-                                <a>Une réclamation ?</a>
+                                <a>Une réclamation ?</a></br>
                             </div>
                         </div>
                     </div>

@@ -67,7 +67,7 @@
 
                 <div class="col mt-2 mb-4 text-center">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?=$package->getImagePath()?>" alt="Card image cap">
+                        <img style="width:18em; height: 13em;" class="card-img-top" src="<?=$package->getImagePath()?>" alt="Card image cap">
                         <div class="card-body text-center">
                             <h5 class="card-title"><?=$package->getName()?></h5>
                             <p class="card-text"><?=$package->getDescription()?></p>

@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label class="label-file" for="image_name">Image du packet de cartes</label>
+                                    <label class="label-file" for="image_name">Image du packet de cartes (favorisé des images avec une resolution 360x360)</label>
                                     <input type="file" class="form-control" id="image_name" name="image_name" required>
                                 </div>
                             </div>
