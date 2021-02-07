@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Modification packet de cartes :</h3>
-                        <form action="../controllers/modifPackage.php" method="POST">
+                        <form action="../controllers/modifPackage.php" method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="name">Nom du jeu de cartes :</label>
@@ -55,13 +55,13 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label class="label-file" for="image_name">Image du packet de cartes (favorisé des images avec une resolution 360x360)</label>
-                                    <input type="file" class="form-control" id="image_name" name="image_name" required>
+                                    <input type="file" class="form-control" id="image_name" name="image_name">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="background_name">Image de fond d'écran du jeu</label>
-                                    <input type="file" class="form-control" id="background_name" name="background_name" required>
+                                    <input type="file" class="form-control" id="background_name" name="background_name">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -70,6 +70,7 @@
                                     <input type="themes" class="form-control" id="themes" name="themes" size="50" value="<?=implode(',', $package->getThemes())?>" required>
                                 </div>
                             </div>
+                            <input type="hidden" name="package" value="<?=$id_package?>" required/>
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="description">Description :</label>

@@ -214,13 +214,12 @@ class CardPackageDAO
      * @param int $id_creator
      * @return CardPackage|false
      */
-    public function updateCard(int $id, string $name, string $description, string $image_name, string $background_name, array $themes, int $id_creator) {
+    public function updateCardPackage(int $id, string $name, string $description, string $image_name, string $background_name, array $themes, int $id_creator) {
         $str_themes  = "";
         foreach ($themes as $t) {$str_themes = $str_themes . "," . $t;}
         $str_themes = trim($str_themes, ",");
-
         $stmt = $this->connection->prepare("UPDATE `card_package` SET `name` = ?, `description` = ?, `themes` = ?, `creator` = ? WHERE id_card_package = ?");
-        $stmt->bind_param("sssi", $name, $description, $str_themes, $id_creator, $id);
+        $stmt->bind_param("sssii", $name, $description, $str_themes, $id_creator, $id);
 
         if($stmt->execute() === false) {
             return false;
@@ -231,11 +230,11 @@ class CardPackageDAO
         }
 
         $stmt = $this->connection->prepare("UPDATE `card_package_image` SET `name` = ? WHERE id_card_package = ?");
-        $stmt->bind_param("s", $image_name);
+        $stmt->bind_param("si", $image_name, $id);
         $stmt->execute();
 
         $stmt = $this->connection->prepare("UPDATE `card_package_background` SET `name` = ? WHERE id_card_package = ?");
-        $stmt->bind_param("s", $background_name);
+        $stmt->bind_param("si", $background_name, $id);
         $stmt->execute();
 
         $user = $this->user_dao->getUserById($id_creator);
