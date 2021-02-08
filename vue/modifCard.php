@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Modification d'une carte :</h3>
-                        <form action="../controllers/creationCard.php?package=<?= $id_package ?>" method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/cardModification.php?package=<?= $id_package ?>&card=1" method="POST" enctype="multipart/form-data">
                             <div id="questionaire">
                                 <div class="form-row">
                                     <div class="form-group col">
