@@ -27,7 +27,7 @@
                             <h5 class="card-title">Question N°</h5>
                             <p class="card-text">dasfdqsdfdq</p>
                             <button onclick=window.location.href='../vue/modifCard?package=33&card=1' type='button' class='card-link btn btn-warning mt-2'>Modifier</button>
-                            <button type='button' class='card-link btn btn-danger mt-2'>Supprimer</button>
+                            <button onclick=window.location.href='../controllers/cardRemove?package=33&card=1' type='button' class='card-link btn btn-danger mt-2'>Supprimer</button>
                         </div>
                     </div>
                 </div>
