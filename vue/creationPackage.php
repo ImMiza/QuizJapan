@@ -15,7 +15,7 @@
         <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-4">
-                        <button onclick=window.location.href='../vue/menuUtilisateur.php' class="btn btn-success">Retour</button>
+                        <button onclick=window.location.href='../vue/mesCreations.php' class="btn btn-success">Retour</button>
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Création du packet de cartes :</h3>

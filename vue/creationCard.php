@@ -35,7 +35,7 @@
         ?>
 
         <main>
-        <div class="container-fluid mt-5">
+            <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-4">
                         <button onclick=window.location.href='../vue/mesCreations.php' class="btn btn-success">Retour aux créations</button>
