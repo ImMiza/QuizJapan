@@ -8,6 +8,10 @@
             if(isset($_SESSION['erreur'])){
                 $erreur = $_SESSION['erreur'];
             }
+
+            if(isset($_SESSION['granted'])) {
+                $granted = $_SESSION['granted'];
+            }
             include_once('../public/template/header.php');
 
             if(!isset($compte)) {
@@ -42,7 +46,7 @@
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Création d'une carte :</h3>
-                        <form action="../controllers/creationCard.php?package=<?= $id_package ?>" method="POST" enctype="multipart/form-data">
+                        <form action="../controllers/cardCreate.php?package=<?= $id_package ?>" method="POST" enctype="multipart/form-data">
                             <div id="questionaire">
                                 <div class="form-row">
                                     <div class="form-group col">
@@ -77,6 +81,12 @@
                                     echo $erreur ;
                                     echo('</div>');
                                     unset($_SESSION['erreur']);
+                                }
+                                else if (isset($granted)) {
+                                    echo('<div class="text-center success alert-success">');
+                                    echo $granted ;
+                                    echo('</div>');
+                                    unset($_SESSION['granted']);
                                 }
                             ?>
                         </form>                    
