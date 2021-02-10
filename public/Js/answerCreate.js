@@ -1,7 +1,8 @@
 var add = document.getElementById('addQuestion');
 let contenu = "";
-var compteurQuestionFausse = 1;
-            
+var compteurQuestionFausse = document.getElementById('amount_fake_question');
+compteurQuestionFausse = compteurQuestionFausse == null ? 1 : compteurQuestionFausse;
+
 add.addEventListener('click', event => {
     event.preventDefault();
     compteurQuestionFausse++;
