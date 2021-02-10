@@ -53,7 +53,7 @@
             <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-4">
-                        <button onclick=window.location.href='../vue/displayCard.php' class="btn btn-success">Retour aux cartes</button>
+                        <button onclick=window.location.href='../vue/displayCard?package=<?=$id_package?>' class="btn btn-success">Retour aux cartes</button>
                     </div>
                     <div class="col-4 text-center">
                         <h3 class="text-center">Modification d'une carte :</h3>

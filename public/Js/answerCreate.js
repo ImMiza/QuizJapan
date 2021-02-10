@@ -1,13 +1,17 @@
 var add = document.getElementById('addQuestion');
 let contenu = "";
 var compteurQuestionFausse = document.getElementById('amount_fake_question');
-compteurQuestionFausse = compteurQuestionFausse == null ? 1 : compteurQuestionFausse;
+
+var compteurQuestion = compteurQuestionFausse == null ? 1 : compteurQuestionFausse.innerHTML;
+if(compteurQuestion >= 5){
+    add.className = "btn btn-success mt-4 disabled";
+}
 
 add.addEventListener('click', event => {
     event.preventDefault();
-    compteurQuestionFausse++;
+    compteurQuestion++;
     // $('#questionaire').empty();
-    if(compteurQuestionFausse <= 5){
+    if(compteurQuestion <= 5){
         contenu ="<div class='form-row'>";
         contenu +="<div class='form-group col'>";
         contenu +="<label for='name'>Mauvaise réponse supplémentaire</label>";
@@ -16,7 +20,7 @@ add.addEventListener('click', event => {
         contenu +="</div>";
     }
 
-    if(compteurQuestionFausse == 5){
+    if(compteurQuestion >= 5){
         add.className = "btn btn-success mt-4 disabled";
     }
     $('#questionaire').append(contenu);
