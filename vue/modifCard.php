@@ -116,7 +116,7 @@
 
         <?php include_once('../public/template/footer.php'); ?>
         
-        <script  src="../public/Js/answerCreate.js"></script>
+        <script src="../public/Js/answerCreate.js"></script>
 
     </body>
 </html>

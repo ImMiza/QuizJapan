@@ -21,7 +21,7 @@
                             <div class="card-header">Valeur : 15 points</div>
                             <div class="card-body">
                                 <h5 class="card-title">Question 1/20</h5>
-                                <p class="card-text">Combient de couille à Jabba le hutt ?</p>
+                                <p id="question" value="33" class="card-text">Combient de couille à Jabba le hutt ?</p>
                             </div>
                         </div>
                     </div>
@@ -62,46 +62,20 @@
 
         <?php include_once('../public/template/footer.php'); ?>
         
-        <script defer>
-            let finish = false;
-            let cards = document.getElementsByClassName("border_card");
-
-            Array.from(cards).forEach((element) => {
-                element.addEventListener("mouseenter", mouseOver);
-                element.addEventListener("mouseleave", mouseOut);
-                element.addEventListener("click", answer);
-            });
-
-            function mouseOver(event) {
-                if(finish === false) {
-                    event.target.className = "card pointeurCarte border-success bg-success text-white mb-3";
-                }
-            }
-
-            function mouseOut(event) {
-                if(finish === false) {
-                    event.target.className = "card pointeurCarte border-primary mb-3 border_card text-primary";
-                }
-            }
-
-            function answer(event) {
-                var win = undefined;
-                Array.from(cards).forEach((element) => {
-                    element.className = "card pointeurCarte p-3 mb-2 bg-warning text-dark border_card";
-                    element.removeEventListener("click", answer);
-                    element.removeEventListener("mouseenter", mouseOver);
-                    element.removeEventListener("mouseleave", mouseOut);
-
-                    if(element === event.target || element.contains(event.target)) {
-                        win = element;
+        <script defer src="../public/Js/animationCard.js"></script>
+        <script>
+            var Nquestion = $("#question").attr("value");
+            $(".pointeurCarte").click(function(){
+                $.ajax({
+                    url : '../src/Game/testMessage.php',
+                    type: "POST",
+                    dataType : 'Json',
+                    data: "card=" + Nquestion,
+                    success : function(response, statut){ 
+                        alert(response.correct);
                     }
                 });
-                if(win !== undefined) {
-                    win.className = "card pointeurCarte border-success bg-success text-white mb-3";
-                }
-                finish = true;
-            }
-
+            });
         </script>
     </body>
 </html>
