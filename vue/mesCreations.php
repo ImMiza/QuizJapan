@@ -74,7 +74,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <button onclick=window.location.href='../vue/modifPackage.php?package=<?=$package->getId()?>' type='button' class='card-link btn btn-warning mt-2'>Packet</button>
-                                    <button type='button' class='card-link btn btn-success mt-2 mr-3'>Jouer</button>
+                                    <button onclick=window.location.href='../vue/intermede.php' type='button' class='card-link btn btn-success mt-2 mr-3'>Jouer</button>
                                 </div>
                                 <div class="col-6">
                                     <button onclick=window.location.href='../vue/displayCard?package=<?=$package->getId()?>' type='button' class='card-link btn btn-warning mt-2'>Cartes</button>

@@ -58,3 +58,14 @@ main {
     width:18em; 
     height: 13em;
 }
+
+#intermede {
+    height: 100%;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+#centrerNombre {
+    font-size: 38em;
+    font-family: 'Bookman Old Style', serif;
+}

@@ -40,6 +40,7 @@
             </div>
 
             <div class="container-fluid">
+            
             <?php
                 $card_by_rows = 5;
                 $question = 1;
@@ -54,6 +55,7 @@
                 $i = $i + 1;
             ?>
 
+            
                 <div class="col mt-2 mb-4 text-center">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body text-center">
