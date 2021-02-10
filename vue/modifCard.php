@@ -77,7 +77,7 @@
                             </div>
                             <?php
                                 if (isset($erreur)) { 
-                                    echo('<div class="text-center alert alert-danger">');  
+                                    echo('<div class="text-center alert alert-danger mt-2">');  
                                     echo $erreur ;
                                     echo('</div>');
                                     unset($_SESSION['erreur']);

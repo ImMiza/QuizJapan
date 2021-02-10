@@ -77,13 +77,13 @@
                             </div>
                             <?php
                                 if (isset($erreur)) { 
-                                    echo('<div class="text-center alert alert-danger">');  
+                                    echo('<div class="text-center alert alert-danger mt-2">');  
                                     echo $erreur ;
                                     echo('</div>');
                                     unset($_SESSION['erreur']);
                                 }
                                 else if (isset($granted)) {
-                                    echo('<div class="text-center success alert-success">');
+                                    echo('<div class="text-center success alert-success mt-2">');
                                     echo $granted ;
                                     echo('</div>');
                                     unset($_SESSION['granted']);

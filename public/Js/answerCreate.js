@@ -10,7 +10,7 @@ add.addEventListener('click', event => {
         contenu ="<div class='form-row'>";
         contenu +="<div class='form-group col'>";
         contenu +="<label for='name'>Mauvaise réponse supplémentaire</label>";
-        contenu +="<input type='text' class='form-control badAnswer' name='badAnswer[]' required>";
+        contenu +="<input type='text' class='form-control badAnswer' name='badAnswer[]'>";
         contenu +="</div>";
         contenu +="</div>";
     }
