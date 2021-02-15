@@ -61,7 +61,7 @@
                             <div class="card-header">Valeur : 15 points</div>
                             <div class="card-body">
                                 <h5 id="question_amount" class="card-title">Question <?=$question_number?>/<?=$amount_question?></h5>
-                                <p id="question" value="<?=$id_card?>" class="card-text"><?=$card_question?>></p>
+                                <p id="question" value="<?=$id_card?>" class="card-text"><?=$card_question?></p>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         foreach ($card_responses as $card) {
                     ?>
                     <div class="col-sm">
-                        <div id="rep1Border" class="card pointeurCarte border-primary mb-3 border_card text-primary" style="max-width: 18rem;">
+                        <div class="card pointeurCarte border-primary mb-3 border_card text-primary" style="max-width: 18rem;">
                             <div class="card-body">
                                 <p class="card-text"><?=$card?></p>
                             </div>
@@ -92,8 +92,8 @@
             var container = document.getElementById("cards_container");
             var amountQuestion = <?=$amount_question?>;
             var Nquestion = $("#question").attr("value");
-            $(".pointeurCarte").click(function(){
-                let question_text = $(this).text;
+            $(".pointeurCarte").click(function(event){
+                let question_text = $(event.target).text()
                 console.log("package=<?=$id_package?>&id_card=" + Nquestion + "&question=" + question_text);
                 $.ajax({
                     url : '../src/Game/RequestCardAnswer.php',

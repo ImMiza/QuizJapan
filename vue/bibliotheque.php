@@ -61,7 +61,7 @@
                             <p class="card-text"><?=$package->getDescription()?></p>
                             <?php
                                 if(isset($compte)){
-                                    echo("<a href='../vue/intermede.php' class='btn btn-success'>Jouer</a>");
+                                    echo("<a href='../vue/intermede.php?package=" .  $package->getId()  . "' class='btn btn-success'>Jouer</a>");
                                 } else {
                                     echo("<p class='text-danger'>Il faut te connecter pour jouer</p>");
                                 }
