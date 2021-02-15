@@ -1,5 +1,13 @@
 <html lang="fr">
-    <?php include_once('../public/template/head.php');?>
+    <?php
+
+    if(!isset($_GET['package'])) {
+        header('location:http://quizjapan/vue/mesCreations');
+        exit(0);
+    }
+
+
+    include_once('../public/template/head.php');?>
 
     <body onload="decompte();" id="intermede">
         <div class="container">
@@ -25,7 +33,7 @@
                     x = setTimeout("decompte()",1000);
                 }
                 else {
-                    document.location.href="http://quizjapan/vue/card.php"; 
+                    document.location.href="http://quizjapan/vue/card.php?package=<?=$_GET['package']?>";
                 }
             }
         </script>
