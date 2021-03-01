@@ -137,6 +137,7 @@
                 block.innerHTML = children;
                 container.appendChild(block);
             }
+
         </script>
     </body>
 </html>
