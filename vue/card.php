@@ -96,6 +96,7 @@
             addEvents();
             initEvent();
 
+
             function initEvent() {
                 let Nquestion = $("#question").attr("value");
 
