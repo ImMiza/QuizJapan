@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col p-0">
                         <div class="jumbotron text-center">
-                            <h1 class="display-4">Bienvenue sur QuizJapan un site éducatif pour petit et grand !</h1>
+                            <h1 class="display-4">Bienvenue sur The Quiz un site éducatif pour petit et grand !</h1>
                         </div>
                     </div>
                 </div>

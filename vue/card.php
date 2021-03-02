@@ -122,7 +122,11 @@
                                     setNextQuestion(answers);
                                 }
                                 else {
-                                    //TODO Une fois fini on fait quoi
+                                    var form = $('<form action="http://quizjapan/vue/gameEnd.php" method="post">' +
+                                        '<input type="text" name="amountPoint" value="' + pointsAmount + '" />' +
+                                        '</form>');
+                                    $('body').append(form);
+                                    form.submit();
                                 }
                             }
                         }

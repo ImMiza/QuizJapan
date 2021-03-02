@@ -9,7 +9,7 @@
    		</div>
    		<div class="row">
    			<div class="col">
-   				<i class="far fa-copyright"></i> 2021 QuizJapan, tout droit réservé.
+   				<i class="far fa-copyright"></i> 2021 The Quiz, tout droit réservé.
    			</div>
    		</div>
 	</div>

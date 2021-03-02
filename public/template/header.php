@@ -7,7 +7,7 @@
   ?>
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="titre nav-link text-white" href="http://quizjapan/vue/">QuizJapan</a>
+    <a class="titre nav-link text-white" href="http://quizjapan/vue/">The Quiz</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
