@@ -87,55 +87,94 @@
 
         <?php include_once('../public/template/footer.php'); ?>
         
-        <script defer src="../public/Js/animationCard.js"></script>
+        <script src="../public/Js/animationCard.js"></script>
         <script>
+            var pointsAmount = 0;
             var container = document.getElementById("cards_container");
             var amountQuestion = <?=$amount_question?>;
-            var Nquestion = $("#question").attr("value");
-            $(".pointeurCarte").click(function(event){
-                let question_text = $(event.target).text()
-                console.log("package=<?=$id_package?>&id_card=" + Nquestion + "&question=" + question_text);
-                $.ajax({
-                    url : '../src/Game/RequestCardAnswer.php',
-                    type: "POST",
-                    dataType : 'Json',
-                    data: "package=<?=$id_package?>&id_card=" + Nquestion + "&question=" + question_text,
-                    success : function(response, statut){
-                        console.log(JSON.stringify(response));
-                        if(response.error === undefined) {
-                            if(response.finish === false) {
-                                document.getElementById("question").innerText = response.next_card.card_question;
-                                document.getElementById("question_amount").innerText = "Question " + response.next_question_number + "/" + response.amount_question;
-                                let answers = response.next_card.fake_answers;
-                                answers.push(response.next_card.card_answer);
-                                shuffle(answers);
 
-                                setNextQuestion(answers);
-                            }
-                            else {
-                                //TODO Une fois fini on fait quoi
+            addEvents();
+            initEvent();
+
+            function initEvent() {
+                let Nquestion = $("#question").attr("value");
+
+                $(".pointeurCarte").click(async function(event){
+                    await sleep(1000);
+                    let question_text = $(event.target).text().trim();
+                    $.ajax({
+                        url : '../src/Game/RequestCardAnswer.php',
+                        type: "POST",
+                        dataType : 'Json',
+                        data: "package=<?=$id_package?>&id_card=" + Nquestion + "&question=" + question_text,
+                        success : function(response, statut){
+                            if(response.error === undefined) {
+                                pointsAmount = response.correct === true ? pointsAmount += 15 : pointsAmount;
+                                if(response.finish === false) {
+                                    $("#question").attr("value", response.next_card.id_card);
+                                    document.getElementById("question").innerText = response.next_card.card_question;
+                                    document.getElementById("question_amount").innerText = "Question " + response.next_question_number + "/" + response.amount_question;
+                                    let answers = response.next_card.fake_answers;
+                                    answers.push(response.next_card.card_answer);
+                                    shuffle(answers);
+
+                                    setNextQuestion(answers);
+                                }
+                                else {
+                                    //TODO Une fois fini on fait quoi
+                                }
                             }
                         }
-                    }
+                    });
                 });
-            });
+            }
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
             function shuffle(array) {
                 array.sort(() => Math.random() - 0.5);
             }
 
             function setNextQuestion(array) {
-                container.innerText = "";
+                while(container.lastChild) {
+                    container.removeChild(container.lastChild);
+                }
 
                 array.forEach(question => {
-                    createBlock("<div class='card pointeurCarte border-primary mb-3 border_card text-primary' style='max-width: 18rem;'> <div id='rep1' class='card-body'> <p class='card-text'>"+question+"</p> </div> </div>");
+                    container.appendChild(createBlock(question));
                 });
+
+                addEvents();
+                initEvent();
             }
 
-            function createBlock(children) {
+            function createBlock(question) {
                 let block = document.createElement("div");
-                block.className = "col-sm";
-                block.innerHTML = children;
-                container.appendChild(block);
+                block.classList.add("col-sm");
+
+                let block_child = document.createElement("div");
+                block_child.classList.add("card");
+                block_child.classList.add("pointeurCarte");
+                block_child.classList.add("border-primary");
+                block_child.classList.add("mb-3");
+                block_child.classList.add("border_card");
+                block_child.classList.add("text-primary");
+                block_child.style.maxWidth = "18rem";
+
+                let card_body = document.createElement("div");
+                card_body.classList.add("card-body");
+
+                let p_question = document.createElement("p");
+                p_question.classList.add("card-text");
+                p_question.appendChild(document.createTextNode(question));
+
+                card_body.appendChild(p_question);
+                block_child.appendChild(card_body);
+                block.appendChild(block_child);
+
+                return block;
             }
 
         </script>

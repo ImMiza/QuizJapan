@@ -1,11 +1,14 @@
 let finish = false;
-let cards = document.getElementsByClassName("border_card");
 
-Array.from(cards).forEach((element) => {
-    element.addEventListener("mouseenter", mouseOver);
-    element.addEventListener("mouseleave", mouseOut);
-    element.addEventListener("click", answer);
-});
+function addEvents() {
+    finish = false;
+    let cards = document.getElementsByClassName("border_card");
+    Array.from(cards).forEach((element) => {
+        element.addEventListener("mouseenter", mouseOver);
+        element.addEventListener("mouseleave", mouseOut);
+        element.addEventListener("click", answer);
+    });
+}
 
 function mouseOver(event) {
     if(finish === false) {
@@ -21,6 +24,7 @@ function mouseOut(event) {
 
 function answer(event) {
     var win = undefined;
+    let cards = document.getElementsByClassName("border_card");
     Array.from(cards).forEach((element) => {
         element.className = "card pointeurCarte p-3 mb-2 bg-warning text-dark border_card";
         element.removeEventListener("click", answer);
