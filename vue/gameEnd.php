@@ -16,7 +16,7 @@
                         <?php 
                             if(isset($_POST['amountPoint'])){
                                 echo"<h3>Bravo vous avez gagnez : " . $_POST['amountPoint'] . "points </h3>";
-                                echo"<h5>Nous t'invitons à esssyer tout les autres quiz de la page pour faaire grimper ton score !</h5>";
+                                echo"<h5>Nous t'invitons à essayer tout les autres quiz de la page pour faire grimper ton score !</h5>";
                             } else {
                                 echo"<h3>Bien essayer !</h3>";
                             }
