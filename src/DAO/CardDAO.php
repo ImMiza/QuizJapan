@@ -96,9 +96,7 @@ class CardDAO
      * @return Card|false
      */
     public function createNewCard(int $id_card_package, string $question, string $answer, array $fake_answers) {
-        $fakeAnswers = "";
-        foreach ($fake_answers as $fa) {$fakeAnswers = $fakeAnswers . "," . $fa;}
-        $fakeAnswers = trim($fakeAnswers, ",");
+        $fakeAnswers = implode(",", $fake_answers);
 
         $stmt = $this->connection->prepare("INSERT INTO `card` (`id_card`, `id_card_package`, `question`, `answer`, `fake_answers`) VALUES (NULL, ?, ?, ?, ?)");
         $stmt->bind_param("isss", $id_card_package, $question, $answer, $fakeAnswers);
